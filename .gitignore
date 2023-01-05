@@ -4,4 +4,6 @@
 *.bbl
 *.blg
 *.dvi
-
+*.py
+*.out
+*.csv

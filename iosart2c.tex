@@ -16,7 +16,7 @@
 %\usepackage{natbib}
 \usepackage[numbers]{natbib}
 
-%\usepackage[dvips]{hyperref}
+\usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{dcolumn}
 %\usepackage{endnotes}
@@ -68,13 +68,13 @@
 
 %
 %\pretitle{Pretitle}
-\title{Evolving neural networks for threat process detection with autoencoder-based fitness functions.\thanks{Footnote in title.}}
+\title{Evolving neural networks for threat process detection with autoencoder-based fitness functions.}
 
 \runningtitle{Evolving neural networks for threat process detection using autoencoder to build a fitness function.}
 %\subtitle{Subtitle}
 
 
-\author[A]{\fnms{Henry D.} \snm{Navarro H.}\thanks{Corresponding author. E-mail: contact@henrynavarro.org.}\thanks{Do not use capitals for the author's surname.}},
+\author[A,B]{\fnms{Henry D.} \snm{Navarro H.}\thanks{Corresponding author. Henry D. Navarro H., E-mail: contact@henrynavarro.org.}},
 \author[B]{\fnms{Héctor} \snm{Bullejos}},
 \author[B]{\fnms{Carmelo} \snm{Garrido}}
 and
@@ -111,7 +111,7 @@ Any evolutionary algorithm needs a fitness function in order to determine what a
 
 Autoencoders are neural networks that consist of an encoder to generate a vector of features in the latent space (of smaller dimension) and from the input data and a decoder, which seeks to reconstruct the input data from this latent vector \cite{autoencoders_nlp1}. This type of neural networks are used in anomaly detection \cite{anomaly1, anomaly3},\cite{anomaly4}, natural language processing \cite{autoencoders_nlp1} and dimensionality reduction \cite{dimred1}, \cite{dimred2}.\\
 
-Other researchers have proved that autoencoders can be used to detect other threats like Denial of Services \cite{autoencoderdos}. On their paper, \citeauthor{autoencoderdos} use an autoencoder to classify different denial of services attacks. However, our objective is not only to classify the state of a virtual machine between two states: healthy and under attack but, to get a measure to quantify how infected a virtual instance is. For this, we train this neural network just with the healthy state data and we will use the mean square error (MSE) as a fitness function to choose the best agents in threat detection, the closer this value to zero the more healthy is the state of the instance.\\
+Other researchers have proved that autoencoders can be used to detect other threats like Denial of Services \cite{autoencoderdos}. On their paper, they use an autoencoder to classify different denial of services attacks. However, our objective is not only to classify the state of a virtual machine between two states: healthy and infected but, to get a measure to quantify how infected a virtual instance is. For this, we train this neural network just with the healthy state data and we will use the mean square error (MSE) as a fitness function to choose the best agents in threat detection, the closer this value to zero the more healthy is the state of the instance.\\
 
 As for the topic of deep neuroevolution, there is no direct application in the area of cybersecurity. However, other researchers have applied genetic algorithms to improve network security \cite{GA1, GA2, GA3}. In most of these papers, a binary gene is reached out in order to block or detect certain network attacks such as Syn-Flood, Smurf and others, for this purpose, common operations in genetic algorithms such as selection, crossover, mutation are used.\\
 
@@ -162,11 +162,6 @@ Hugepages are useful in managing virtual memory on Linux systems. As the name im
 
 \subsubsection{Socket summary}
 These variables refer to the summary of open socket metrics in the system. A socket is nothing more than a communication channel between two programs that run on different computers or even on the same computer. Malicious processes seeking to attack the network are expected to affect these variables.  \\
-
-
-\section{Anomaly detection classification for fitness function}\label{autoencoder_section}
-
-An autoencoder neural network is an unsupervised learning algorithm that applies backpropagation, configuring the target values to be equal to the inputs. That is, the response variable that the machine learning algorithm tries to learn is such that $y^{(i)} = x^{(i)} $, where $x^{(i)} = \{x^{(1)}, x^{(2)}, \ldots, x^{(n)} \} $ are the input variables detailed in section \ref{dataset_autoencoder} and the appendix \ref{appx_variables}.\\
 
 \section{Anomaly detection classification for fitness function}\label{autoencoder_section}
 
@@ -263,7 +258,7 @@ The autoencoder is trained with the well-known algorithm called stochastic gradi
 On the other hand, to achieve our objective, we will have to determine what is that threshold from which we will say that there is an anomaly. To find this decision threshold, we seek to test for all mean square error in our training data (healthy) and determine which of them is the optimal one that maximizes the accuracy in the confusion matrix, as shown in the Algorithm. \ref{obtener_umbral}.
 
 
-\begin{algorithm*}
+\begin{algorithm}
 \caption{Obtaining the optimal $\alpha$ threshold for anomaly detection}\label{obtener_umbral}
 \textbf{Input:} Train dataset $X_{train}=\{X_{train}^{(1)},\ldots,X_{train}^{(n)}\}$, Validation dataset $X_{val}=\{X_{val}^{(1)},\ldots,X_{val}^{(n)}\}$, autoencoder $h_{W,b}$.\\
 
@@ -288,7 +283,7 @@ On the other hand, to achieve our objective, we will have to determine what is t
 \EndFor\\
 \end{algorithmic}
 \textbf{Output:} Optimal threshold $\alpha$.\\
-\end{algorithm*}
+\end{algorithm}
 
 
 \newpage
@@ -336,7 +331,6 @@ Therefore, for the logical bomb attack, $n^{[2]}=2$ because what we will obtain 
 \end{align*}
 
 such that  $P_{\texttt{no}}+P_{\texttt{kill}}=1$, where $x_i$ are the monitored variables for that process, defined in section \ref{variables}. So the activation function in the last hidden layer will be given by the function softmax \ref{softmax}. \\
-
 
 In our case, the neural network that we have chosen can be seen in the diagram we can see in figure \ref{fig:architecture_autoencoder}.\\
 
@@ -531,15 +525,15 @@ Elitism in our case refers to a selection of the neural network which is the bes
 \end{algorithmic}
 \end{algorithm}
 
-On the other hand, we must penalize when the agent decides to kill all the processes of the instance, otherwise the neural network will learn to reduce the MSE given by the autoencoder based on kill all the processes of the instance, so when the agent applies \texttt{kill} to all processes, the command will be changed to not kill any processes. Finally the scheme of the neuroevolution algorithm can be seen in Figure \ref{fig:diagneuroevolution}.
+On the other hand, we must penalize when the agent decides to kill all the processes of the instance, otherwise the neural network will learn to reduce the MSE given by the autoencoder based on kill all the processes of the instance, so when the agent applies \texttt{kill} to all processes, the command will be changed to not kill any processes. Finally the scheme of the neuroevolution algorithm can be seen in Figure \ref{fig:architecture_autoencoder}.
 
 
-\begin{figure*}[h!]
-\includegraphics[scale=0.5]{figs/neuroevolution/diag_neuroevolution.pdf}
+\begin{figure}[h!]
+\includegraphics[width=0.51\textwidth]{figs/neuroevolution/diag_neuroevolution.eps}
 \vspace{-0.5cm}
 \caption{Neuroevolution algorithm flow.}
 \label{fig:diagneuroevolution}
-\end{figure*}
+\end{figure}
 
 
 
@@ -637,20 +631,21 @@ After the model is trained, it is necessary to determine the decision threshold 
 
 With this decision threshold, a confusion matrix is obtained in order to consider the autoencoder not only as a anomaly detector but also as a classifier and to provide results about classification metrics. The results are shown in Table \ref{confusion_matrix}. \\
 
+
 \begin{table}[h!]
 \centering
 \begin{tabular}{llll}
                                                 &                                 & \multicolumn{2}{c}{Real}                                       \\ \cline{3-4} 
                                                 & \multicolumn{1}{l|}{}           & \multicolumn{1}{l|}{L. Bomb} & \multicolumn{1}{l|}{Healthy} \\ \cline{2-4} 
 \multicolumn{1}{c|}{Predicted} & \multicolumn{1}{l|}{L. Bomb} & \multicolumn{1}{l|}{1629}       & \multicolumn{1}{l|}{174}     \\ \cline{2-4} 
-\multicolumn{1}{c|}{}                           & \multicolumn{1}{l|}{Healthy}    & \multicolumn{1}{l|}{135}        & \multicolumn{1}{l|}{5457}    \\ \cline{2-4}
-\end{tabular} 
-\caption{Confusion matrix built from threshold decision $\alpha$. The classification is done considering  $MSE>\alpha\implies$ as an infected instance.}
+\multicolumn{1}{c|}{}                           & \multicolumn{1}{l|}{Healthy}    & \multicolumn{1}{l|}{135}        & \multicolumn{1}{l|}{5457}    \\ \cline{2-4} 
+\vspace{0.001cm}
+\end{tabular}
+\caption{Classification considering  $MSE>\alpha$ is infected.}
 \label{confusion_matrix}
 \end{table}
 
 Then, a 10-fold cross validation is done and finally we get the following performance measures (mean of the 10-fold results), which usually are taken into account to determine the goodness of fit.
-
 
 \begin{equation*}
 \begin{aligned}
@@ -667,30 +662,37 @@ These results show that our autoencoder model can classify states of the virtual
 
 In this section we will present the most important results of this paper. We will see how a neural network trained with a hybrid machine learning algorithm with evolutionary algorithms is able to reduce the effect of these attacks on virtual instances. \\
 
-
-\begin{figure*}[h!]
-\begin{subfigure}{.49\linewidth}
-\centering
-\includegraphics[width=\linewidth]{figs/results/reward_best_agent_final.eps}
-\end{subfigure}
-\begin{subfigure}{.49\linewidth}
-\centering
-\includegraphics[width=\linewidth]{figs/results/number_process_final_top_agent.eps}
-\end{subfigure}
-\caption{(Left) Rewards (MSE) for the best agent in each generation using an algorithm to evolve neural networks and (right) total processes that are killed in each generation evolving neural networks using as fitness function the MSE given by the autoencoder (Equation \ref{fitness}).}
-\label{fig:reward_top_agent}
-\end{figure*}
-
 In the Figure \ref{fig:reward_top_agent}, we can see how the Mean Square Error between the input data and the output provided by the autoenconder is reduced almost to zero which proves the desired result, i.e. the best agent is killing the malicious process, reducing the effect of the attack. \\
 
-On the other hand, an agent that kills all the processes will also reduce the effect of the threat, but the instance will be unusable which is not our goal. Therefore, we can see in Figure \ref{fig:reward_top_agent} how the number of processes killed by the best agent are reduced in each generation, which means it is reducing the effect of the threat while killing the right process (malicious).\\
+
+
+
+
+
+\begin{figure}[h!]
+\includegraphics[scale=0.5]{figs/results/reward_best_agent_final.eps}
+\vspace{-0.5cm}
+\caption{MSE for the best agent in each generation using an algorithm to evolve neural networks}
+\label{fig:reward_top_agent}
+\end{figure}
+
+
+On the other hand, an agent that kills all the processes will also reduce the effect of the threat, but the instance will be unusable which is not our goal. Therefore, we can see in Figure \ref{fig:processes_killed_top_agent} how the number of processes killed by the best agent are reduced in each generation, which means it is reducing the effect of the threat while killing the right process (malicious).\\
+
+\begin{figure}[h!]
+\includegraphics[scale=0.5]{figs/results/number_process_final_top_agent.eps}
+\vspace{-0.5cm}
+\caption{MSE for the best agent in each generation using an algorithm to evolve neural networks}
+\label{fig:processes_killed_top_agent}
+\end{figure}
 
 
 \section{Conclusions}
 
-In this paper we have shown other way to reduce the effect of cyber attacks and as well as another application that has the neuroevolution algorithms who has never applied in cyber security. We have confimed the results of other researchers \cite{autoencoderdos} using an autoencoder to classify cyber attacks, although in our case we have used other methodology and other cyber attack. The autoencoders can give you a measure of how close to a healthy state a virtual instance is, this allow us to combine this measure with a neuroevolution algorithm to select the best agents, giving as a result an ingenious hybrid algorithm able to detect malicious processes that are being running in our shell. 
+In this paper we have shown other way to reduce the effect of cyber attacks and as well as another application that has the neuroevolution algorithms who has never applied in cyber security. We have confimed the results of other researchers \cite{autoencoderdos} using an autoencoder to classify cyber attacks, although in our case we have used other methodology and other cyber attack. The autoencoders can give you a measure of how close to a healthy state a virtual instance is, this allow us to combine this measure with a neuroevolution algorithm to select the best agents, giving as a result an ingenious hybrid algorithm able to detect malicious processes that are being running in a shell. 
 
-\newpage~\newpage~\newpage~
+\newpage
+
 \appendix
 \section{Appendix: Description of each variable}\label{appx_variables}
 
@@ -902,7 +904,7 @@ In this paper we have shown other way to reduce the effect of cyber attacks and 
 
 
 
-\bibliographystyle{plainnat} % We choose the "plain" reference style
+\bibliographystyle{plain} % We choose the "plain" reference style
 \bibliography{references} % Entries are in the refs.bib file
 
 
