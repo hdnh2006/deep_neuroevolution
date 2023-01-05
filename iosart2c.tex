@@ -111,7 +111,7 @@ Any evolutionary algorithm needs a fitness function in order to determine what a
 
 Autoencoders are neural networks that consist of an encoder to generate a vector of features in the latent space (of smaller dimension) and from the input data and a decoder, which seeks to reconstruct the input data from this latent vector \cite{autoencoders_nlp1}. This type of neural networks are used in anomaly detection \cite{anomaly1, anomaly3},\cite{anomaly4}, natural language processing \cite{autoencoders_nlp1} and dimensionality reduction \cite{dimred1}, \cite{dimred2}.\\
 
-Other researchers have proved that autoencoders can be used to detect other threats like Denial of Services \cite{autoencoderdos}. In their paper, \citeauthor{autoencoderdos}, they use an autoencoder to classify different denial of services attacks. However, our objective is not only to classify the state of a virtual machine between two states: healthy and under attack but, to get a measure to quantify how infected a virtual instance is. For this, we train this neural network just with the healthy state data and we will use the mean square error (MSE) as a fitness function to choose the best agents in threat detection, the closer this value to zero the more healthy is the state of the instance.\\
+Other researchers have proved that autoencoders can be used to detect other threats like Denial of Services \cite{autoencoderdos}. On their paper, \citeauthor{autoencoderdos} use an autoencoder to classify different denial of services attacks. However, our objective is not only to classify the state of a virtual machine between two states: healthy and under attack but, to get a measure to quantify how infected a virtual instance is. For this, we train this neural network just with the healthy state data and we will use the mean square error (MSE) as a fitness function to choose the best agents in threat detection, the closer this value to zero the more healthy is the state of the instance.\\
 
 As for the topic of deep neuroevolution, there is no direct application in the area of cybersecurity. However, other researchers have applied genetic algorithms to improve network security \cite{GA1, GA2, GA3}. In most of these papers, a binary gene is reached out in order to block or detect certain network attacks such as Syn-Flood, Smurf and others, for this purpose, common operations in genetic algorithms such as selection, crossover, mutation are used.\\
 
@@ -121,15 +121,7 @@ Different investigations in malware detection have been carried out using deep n
 
 \subsection{Network simulation}
 
-The virtual network to emulate the attacks was built and simulated based on the fact that an intruder had already obtained access to the network and already represents an internal threat, that is, the file that executes the malicious process is already found in the virtual instances. In the figure \ref{fig:virtual_network} we see an architecture of our virtualized network where we have 20 instances using an a network orchestrator with 4 physical machines.\\
-
-
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.56]{figs/network/diagrama_ejemplo.jpg}
-\caption{\textbf{ESTA NO ES LA IMAGEN, AQUÍ TIENE QUE IR UNA IMAGEN DE LA RED, TENGO QUE PEDIRLE AYUDA A FERNANDO A VER SI TIENE TIEMPO.}}
-\label{fig:virtual_network}
-\end{figure}
+The virtual network to emulate the attacks was built and simulated based on the fact that an intruder had already obtained access to the network and already represents an internal threat, that is, the file that executes the malicious process is already found in the virtual instances. We have virtualized a network architecture with 20 instances using an a network orchestrator with 4 physical machines.\\
 
 These instances send their system data to a NoSQL database where we monitor the variables that we explain in the next section and these are the features we use to develop our models.
 
@@ -698,7 +690,7 @@ On the other hand, an agent that kills all the processes will also reduce the ef
 
 In this paper we have shown other way to reduce the effect of cyber attacks and as well as another application that has the neuroevolution algorithms who has never applied in cyber security. We have confimed the results of other researchers \cite{autoencoderdos} using an autoencoder to classify cyber attacks, although in our case we have used other methodology and other cyber attack. The autoencoders can give you a measure of how close to a healthy state a virtual instance is, this allow us to combine this measure with a neuroevolution algorithm to select the best agents, giving as a result an ingenious hybrid algorithm able to detect malicious processes that are being running in our shell. 
 
-
+\newpage~\newpage~\newpage~
 \appendix
 \section{Appendix: Description of each variable}\label{appx_variables}
 
@@ -910,7 +902,7 @@ In this paper we have shown other way to reduce the effect of cyber attacks and 
 
 
 
-\bibliographystyle{plain} % We choose the "plain" reference style
+\bibliographystyle{plainnat} % We choose the "plain" reference style
 \bibliography{references} % Entries are in the refs.bib file
 
 

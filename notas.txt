@@ -1,0 +1,36 @@
+- No usar "we"
+
+- References should be listed alphabetically in the style pre- sented in the section References at the end of these instructions.
+
+- Cambiar diagrama de figs/diag_neuroevolution.pdf
+
+- Refer to equations in the text as Eq. (1), Eqs. (3) and (5).
+
+# ====== Comandos
+
+rm iosart2c.pdf
+latex iosart2c.tex
+bibtex iosart2c.aux
+latex iosart2c.tex
+pdflatex iosart2c.tex 
+
+
+
+NO ENTIENDO MUY BIEN ESTA PARTE:
+
+– Line art should have a minimum resolution of 600
+dpi;
+– grayscales (incl photos) should have a minimum
+resolution of 300 dpi (no lettering), or 500 dpi
+(when there is lettering);
+– do not save figures as JPEG, this format may lose
+information in the process;
+– do not use figures taken from the Internet, the res-
+olution will be too low for printing;
+– do not use color in your figures if they are to be
+printed in black & white, as this will reduce the
+print quality (note that in software the default is
+often color, so you should change the settings);
+– for figures that should be printed in color, please
+send a CMYK encoded EPS.
+
