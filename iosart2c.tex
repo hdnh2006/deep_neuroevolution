@@ -557,45 +557,22 @@ It is well known that multicollinearity in data considerably reduces the predict
 \hline
 Variable 1 & Variable 2 & Correlation \\ \hline
 load 15 & load norm 15 & 1.0\\ 
-load norm 1 & load 1 & 1.0\\ 
 memory used bytes & memory free & 1.0\\ 
-memory actual used bytes & memory actual free & 1.0\\ 
-load norm 5 & load 5 & 1.0\\ 
 filesystem free & filesystem available & 0.99\\ 
-memory used bytes & memory used pct & 0.991\\ 
-memory free & memory used pct & 0.99\\ 
-memory actual free & memory actual used pct & 0.99\\ 
-memory actual used bytes & memory actual used pct & 0.99\\ 
 entropy available bits & entropy pct & 0.99\\ 
 core idle pct & cpu idle pct & 0.99\\ 
-core system pct & cpu system pct & 0.99\\ 
-core user pct & cpu user pct & 0.99\\ 
-core nice pct & cpu nice pct & 0.99\\ 
 cpu iowait pct & core iowait pct & 0.99\\ 
 diskio io time & diskio write count & 0.99\\ 
 process summary sleeping & process summary total & 0.98\\ 
-diskio write bytes & diskio io time & 0.98\\ 
 cpu total pct & core idle pct & 0.98\\ 
-cpu total pct & cpu idle pct & 0.98\\ 
 fsstat total size used & fsstat total size free & 0.987\\ 
-diskio io time & diskio write time & 0.98\\ 
-fsstat total size used & filesystem used bytes & 0.97\\ 
-diskio write bytes & diskio write count & 0.96\\ 
-filesystem used bytes & filesystem used pct & 0.96\\ 
-fsstat total size free & filesystem used pct & 0.96\\ 
-diskio write count & diskio write time & 0.95\\ 
-fsstat total size free & filesystem used bytes & 0.94\\ 
-diskio iostat write request per sec & diskio iostat busy & 0.94\\ 
-filesystem free & filesystem free files & 0.92\\ 
-filesystem available & filesystem free files & 0.92\\ 
 diskio iostat await & diskio iostat write await & 0.92\\ 
 socket summary all count & socket summary udp all count & 0.91\\ 
-socket summary tcp all established & socket summary tcp all count & 0.917\\ 
 diskio iostat queue avg size & diskio iostat busy & 0.90\\ \hline
 
 \end{tabular}
 \label{tabla:sencilla}
-\caption{Pearson correlation ($\rho$) table for variables with correlation coefficient $\rho>0.90$.}
+\caption{Pearson correlation ($\rho$). List of some variables with correlation coefficient $\rho>0.90$.}
 \end{table*}
 
 In this way, it was first established that variables were strongly related to each other (a pearson's correlation coefficient higher than 0.7) and once the relationships were obtained, a study was carried out on the variables themselves, that is, the definition of the variables themselves. Thus, if two variables explained the same information, one of them would be discarded. It was also tried to have at least one representative variable for each module in order to have more complete information on the system. After this study, a total of 58 out of 97 variables were discarded.
