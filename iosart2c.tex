@@ -68,7 +68,7 @@
 
 %
 %\pretitle{Pretitle}
-\title{Evolving neural networks for threat process detection using autoencoder to build a fitness function.\thanks{Footnote in title.}}
+\title{Evolving neural networks for threat process detection with autoencoder-based fitness functions.\thanks{Footnote in title.}}
 
 \runningtitle{Evolving neural networks for threat process detection using autoencoder to build a fitness function.}
 %\subtitle{Subtitle}
@@ -86,7 +86,7 @@ E-mail: contact@henrynavarro.org}
 E-mail: engineering@capgemini.com}
 
 \begin{abstract}
-Threat detection is one of the main focus of several studies in the cybersecurity area and it has become one of the main focuses of researchars. Threat may occur in any forms like viruses or phishing attack with different purposes. Once the intruder has filtered into our system, the primary step is to try to detect the malicious process to prevent it from causing damage to our system. In this paper, we present a hybrid method using deep neural networks to obtain a fitness function and evolutionary algorithms to detect and kill malicious processes on a simulated network system in streaming.
+Threat detection is one of the main focus of several studies in the cybersecurity area and it has become one of the main focuses of researchars. Threat may occur in any forms like viruses or phishing attack with different purposes. Once the intruder has filtered into our system, the primary step is to try to detect the malicious process to prevent it from causing damage to our system. In this paper, we present a real time hybrid method using deep neural networks to obtain a fitness function and evolutionary algorithms to detect and kill malicious processes on a simulated network system.
 \end{abstract}
 
 \begin{keyword}
@@ -98,31 +98,30 @@ Neuroevolution \sep Genetic Algorithms \sep Threat detection \sep Autoencoders
 
 
 \section{Introduction}
+Deep neuroevolution, autoencoders, and cybersecurity are three interrelated areas that have the potential to significantly impact the field of information security. Deep neuroevolution refers to the use of evolutionary algorithms to optimize artificial neural networks, which can be used to improve the accuracy and efficiency of various machine learning tasks. Autoencoders, on the other hand, are a type of neural network that can be used to learn efficient representations of data, and have been applied to a wide range of problems including dimensionality reduction, anomaly detection, and data compression. In the context of cybersecurity, these techniques can be used to improve the ability of systems to detect and mitigate various cyber threats, such as malware, phishing attacks, and network intrusions.\\
 
-Cybersecurity has become into one of the main topics of the last years due to...\\
+In order to simulate a network, attack computers with a malicious process and have an environment under control, we have created a virtual network with 20 virtual instances using open source softwares. We start from the fact that the malicious process has already infiltrated in our system either using ransomware, social engineering or any other common technique in modern cybersecurity. We collect the system data of these virtual instances using open source libraries. This data will be used to train neural networks, detect and kill the malicious process using evolutionary algorithms based on deep neuroevolution.\\
 
-In order to simulate a network, attack computers with a malicious process and having an environment under control, we have created a virtual network with 20 virtual instances using open source softwares. We start from the fact that the malicious process has infiltrated in our system either using ransomware, social engineering or any other common technique in modern cybersecurity. We collect the system data of these virtual instances using open source libraries. This data will be used to train neural networks, and detect and kill the malicious process using evolutionary algorithms.\\
+Evolve neural networks has been used in different tasks but mainly in train neural networks to play video games \cite{deepGA}, \cite{neuroevolution1}, \cite{neuroevolution2}, although there are other applications as music generation \cite{neuroevolution3} and modelling biological phenomena \cite{neuroevolution4}. These neural network training methods rely on genetic algorithm operations to obtain the best agent to perform a specific task. However, there is not too much research related to this topic and cybersecurity as we will see in the section \ref{relatedwork}.\\
 
-Evolve neural networks has been used in different tasks but mainly in train neural networks to play video games \cite{deepGA}, \cite{neuroevolution1}, \cite{neuroevolution2}, although there are other applications as music generation \cite{neuroevolution3} and modelling biological phenomena \cite{neuroevolution4}. These neural network training methods rely on genetic algorithm operations to obtain the best agent to perform a specific task. However, there is no too much research related with this topic and cybersecurity as we will see in the section \ref{relatedwork}.\\
-
-Any evolutionary algorithm needs a fitness function in order to determine what agents or individuals are the best in each generation. In our case, the best agents will be those who ``kill'' the malicious process in each generation which will result in instances which take their ``normal states''. In order to characterize this normal state, we use an ingenuous solution for this need, using an artificial neural network called autoencoder. This neural network will learn the healthy state of each instance and using the mean square error (MSE) between the inputs and outputs of the neural networks, we will know how infected is the instance, so the more close this value to zero the more healthy is the state of the instance, so we will use the better agents following this criteria. Then, using the simple command of any Linux system has, we kill the process who is negatively affecting our virtual instance.
+Any evolutionary algorithm needs a fitness function in order to determine what agents or individuals are the best in each generation. In our case, the best agents will be those who ``kill'' the malicious process in each generation which will result in instances which take their ``normal states''. In order to characterize this normal state, we use an ingenuous solution for this need, using an artificial neural network called autoencoder. This neural network will learn the healthy state of each instance and using the mean square error (MSE) between the inputs and outputs of the neural networks, we will know how infected is the instance, so the closer this value to zero the more healthy is the state of the instance, then we will use the best agents following this criteria. Finally, using a single command of any Linux system, we kill the process who is negatively affecting our virtual instance.
 
 
 \section{Related work}\label{relatedwork}
 
-Autoencoders are neural networks that consist of an encoder to generate a vector of features in the latent space (of smaller dimension) and from the input data and a decoder, which seeks to reconstruct the input data from this latent vector \cite{autoencoders_nlp1}. This type of neural network is used in anomaly detection \cite{anomaly1, anomaly3},\cite{anomaly4}, natural language processing \cite{autoencoders_nlp1} and dimensionality reduction \cite{dimred1}, \cite{dimred2}.\\
+Autoencoders are neural networks that consist of an encoder to generate a vector of features in the latent space (of smaller dimension) and from the input data and a decoder, which seeks to reconstruct the input data from this latent vector \cite{autoencoders_nlp1}. This type of neural networks are used in anomaly detection \cite{anomaly1, anomaly3},\cite{anomaly4}, natural language processing \cite{autoencoders_nlp1} and dimensionality reduction \cite{dimred1}, \cite{dimred2}.\\
 
-Others researchers have proved that autoencoders can be used to detect attacks as Denial of Services \cite{autoencoderdos}. In their paper, \citeauthor{autoencoderdos}, they use an autoencoder to classify different denial of services attacks. However, our objective is not only to classify the state of a virtual machine between two states: healthy and under attack but, to get a measure to quantify how infected an virtual instance is. For this, we train this neural network just with the healthy state data and we will use the mean square error (MSE) as a fitness function to choose the best agents in threat detection, the more close this value to zero the more healthy is the state of the instance.\\
+Other researchers have proved that autoencoders can be used to detect other threats like Denial of Services \cite{autoencoderdos}. In their paper, \citeauthor{autoencoderdos}, they use an autoencoder to classify different denial of services attacks. However, our objective is not only to classify the state of a virtual machine between two states: healthy and under attack but, to get a measure to quantify how infected a virtual instance is. For this, we train this neural network just with the healthy state data and we will use the mean square error (MSE) as a fitness function to choose the best agents in threat detection, the closer this value to zero the more healthy is the state of the instance.\\
 
-As for the topic of deep neuroevolution, there is no direct application in the area of cybersecurity. However, other researchers have applied genetic algorithms to improve network security \cite{GA1, GA2, GA3}. In most of these papers, a binary gene is reached out in order to block or detect certain networks attacks as Syn-Flood, Smurf and others, for this purpose, common operations in genetic algorithms as selection, crossover, mutation are used.\\
+As for the topic of deep neuroevolution, there is no direct application in the area of cybersecurity. However, other researchers have applied genetic algorithms to improve network security \cite{GA1, GA2, GA3}. In most of these papers, a binary gene is reached out in order to block or detect certain network attacks such as Syn-Flood, Smurf and others, for this purpose, common operations in genetic algorithms such as selection, crossover, mutation are used.\\
 
-Different investigations in malware detection have been carried out using deep neural networks for them \cite{malwarednn1, malwarednn2,malwarednn3}, however, these researchers train their models using algorithms that involve gradients. In this paper, we present other way to train a neural network that can detect a malicious process that create idle tasks that affects common system values like CPU, memory RAM, hard drive, etc. This process is detected and killed in order to return the healthy state in a virtual instance.
+Different investigations in malware detection have been carried out using deep neural networks for them \cite{malwarednn1, malwarednn2,malwarednn3}, however, these researchers train their models using algorithms that involve gradients. In this paper, we present another way to train a neural network that can detect a malicious process that creates idle tasks that affect common system values like CPU, memory RAM, hard drive, among others. This process is detected and killed in order to return the healthy state in a virtual instance.
 
 \section{Methodology}
 
 \subsection{Network simulation}
 
-The virtual network to emulate the attacks was built and simulated based on the fact that an intruder had already obtained access to the network and already represents an internal threat, that is, the file that executes the malicious process is already found in the virtual instances. In the figure \ref{fig:virtual_network} we saw an architecture of our virtualized network where we have 20 instances using an a network orchestrator with 4 physical machines.\\
+The virtual network to emulate the attacks was built and simulated based on the fact that an intruder had already obtained access to the network and already represents an internal threat, that is, the file that executes the malicious process is already found in the virtual instances. In the figure \ref{fig:virtual_network} we see an architecture of our virtualized network where we have 20 instances using an a network orchestrator with 4 physical machines.\\
 
 
 \begin{figure}[h!]
@@ -132,7 +131,7 @@ The virtual network to emulate the attacks was built and simulated based on the 
 \label{fig:virtual_network}
 \end{figure}
 
-These instances send their system data to a NoSQL database where we monitorize the variables that we explain in the next section and these are the features we use to develop our models.
+These instances send their system data to a NoSQL database where we monitor the variables that we explain in the next section and these are the features we use to develop our models.
 
 \subsection{Dataset}\label{dataset_autoencoder}
 
@@ -144,7 +143,7 @@ They refer to the load characteristics that the CPU of the instance may have. A 
 
 \subsubsection{Core features}
 
-These features are similar to CPU variables, with the difference that they are disaggregated by core. Due to how virtualized instances have been created (1GB of memory, 1 core only), these variables are expected to have a high correlation with those of the CPU.
+These features are similar to CPU variables, with the difference that they are disaggregated by core. Due to how virtualized instances have been created (1GB of memory, 1 core only), these variables are expected to have a high correlation with the CPU variables.
 
 
 \subsubsection{Disk Input/Output (Disk I/O) features}
@@ -183,9 +182,9 @@ An autoencoder neural network is an unsupervised learning algorithm that applies
 
 \subsection{Autoencoder architecture}\label{autoencoder_architecture}
 
-An autoencoder is made up of two parts, an encoder that we will denote as $ f_{\phi} $ and a decoder that we denote with $ g_{\theta} $. An autoencoder neural network will be denoted as $ h_{W, b} = g_\theta \circ f_\phi$, where $W$ and $b$ are the weight matrix and the vector ``bias'' or bias of the neural network and $h$ is the final transformation function or hypothesis. \\
+An autoencoder consists of two parts, an encoder that we will denote as $ f_{\phi} $ and a decoder that we denote with $ g_{\theta} $. An autoencoder neural network will be denoted as $ h_{W, b} = g_\theta \circ f_\phi$, where $W$ and $b$ are the weight matrix and the vector ``bias'' or bias of the neural network and $h$ is the final transformation function or hypothesis. \\
 
-We will denote $n_l$ as the number of layers in our network. In our case, for the autoencoder we have taken a network with three hidden layers, therefore for our case $n_l=5$. We denote the $l$-th layer as $L_l$, therefore $L_1$ is the input layer and $L_{n_l}$ is the denoting the output layer. We also denote the parameters $(W,b)=(W^{(i)},b^{(i)})$, with $i=1,\ldots,5$ and where $W^{(l)}$ are the weight matrices (weights) of each layer and $b^{(i)}$ the bias vector (bias) associated with the connections between the unit (neuron) $j$ in layer $l$, and unit $i$ in layer $l+1$. Likewise, we denote $f_{\cdot l}$ the activation function that ``connects'' layer $l-1$ with the layer $l$. And finally, we denote $s_i$ as the number of neurons (units) of the layer $i$. \\
+We will denote $n_l$ as the number of layers in our network. In our case, we have taken a network with three hidden layers, therefore $n_l=5$. We denote the $l$-th layer as $L_l$, therefore $L_1$ is the input layer and $L_{n_l}$ is the denoting the output layer. We also denote the parameters $(W,b)=(W^{(i)},b^{(i)})$, with $i=1,\ldots,5$ and where $W^{(l)}$ are the weight matrices (weights) of each layer and $b^{(i)}$ the bias vector (bias) associated with the connections between the unit (neuron) $j$ in layer $l$, and unit $i$ in layer $l+1$. Likewise, we denote $f_{\cdot l}$ the activation function that ``connects'' layer $l-1$ with the layer $l$. And finally, we denote $s_i$ as the number of neurons (units) of the layer $i$. \\
 
 
 Due to the high dimensionality of the dataset that we have used, a selection of variables is made, which we explain in the results section \ref{results_autoencoder}. However, we have selected the number of neurons in such a way that in the encoder part $s_i=\left\llbracket\frac{s_{i-1}}{2}\right\rrbracket$, while for the part of the decoder $s_i=\left\llbracket 2\times s_{i-1} \right\rrbracket$, where $\llbracket \cdot \rrbracket$ represents the integer part of a real number. \\
@@ -246,7 +245,7 @@ Graphically, the architecture of the autoencoder can be seen in figure \ref{fig:
 \end{figure*}
 
 
-The autoencoder is trained with the well-known algorithm called stochastic gradient descent  with 60 epochs. From there, the objective is to determine from the mean square error of the input data with the output data a decision threshold for which we will say that the virtual instance is in a healthy state, in this way, we show how we can use the autoencoder rebuild error to classify rare events (anomalies). If the rebuild error is ``high'', we will classify it as an instance failure, this is done with the algorithm \ref{autoencoder_anomalias}.\\
+The autoencoder is trained with the well-known algorithm called stochastic gradient descent  with 60 epochs. The next step is to determine the decision threshold from which the instances will be considered as infected. That is, values greater than this threshold will be infected instances or instances with anomalous behavior. For this, we use the mean square error between the input data and the output of the trained autoencoder as we show in the Algorithm \ref{autoencoder_anomalias}.\\
 
 
 \begin{algorithm}[h!]
@@ -255,8 +254,8 @@ The autoencoder is trained with the well-known algorithm called stochastic gradi
 \begin{algorithmic}[1]
 \State $\phi$, $\theta$ $\xleftarrow{}$ Train the autoencoder with normal data $X$
 \For{i=1 to N}
-    \State error de {reconstrucción}$(i) = \lVert x^{(i)} - g_\theta(f_\phi(x^{(i)})\rVert_2^2$ \Comment{Mean Square Error (MSE)}
-    \If{error de reconstrucción$(i) > \alpha$}
+    \State $MSE(i) = \lVert x^{(i)} - g_\theta(f_\phi(x^{(i)})\rVert_2^2$ \Comment{Mean Square Error (MSE)}
+    \If{$MSE(i) > \alpha$}
         \State$x^{(i)}$ is an anomaly
         \State pred$\xleftarrow{}$1
     \Else 
@@ -269,10 +268,10 @@ The autoencoder is trained with the well-known algorithm called stochastic gradi
 \end{algorithm}
 
 
-On the other hand, to achieve our objective, we will have to determine what is that threshold from which we will say that there is an anomaly. To find this decision threshold, we seek to test for all reconstruction errors in our training data (healthy) and determine which of them is the optimal one that maximizes the accuracy in the confusion matrix, as shown in the algorithm. \ref{obtener_umbral}.
+On the other hand, to achieve our objective, we will have to determine what is that threshold from which we will say that there is an anomaly. To find this decision threshold, we seek to test for all mean square error in our training data (healthy) and determine which of them is the optimal one that maximizes the accuracy in the confusion matrix, as shown in the Algorithm. \ref{obtener_umbral}.
 
 
-\begin{algorithm}[h!]
+\begin{algorithm*}
 \caption{Obtaining the optimal $\alpha$ threshold for anomaly detection}\label{obtener_umbral}
 \textbf{Input:} Train dataset $X_{train}=\{X_{train}^{(1)},\ldots,X_{train}^{(n)}\}$, Validation dataset $X_{val}=\{X_{val}^{(1)},\ldots,X_{val}^{(n)}\}$, autoencoder $h_{W,b}$.\\
 
@@ -282,13 +281,13 @@ On the other hand, to achieve our objective, we will have to determine what is t
 \State $\hat{X}_{val} \xleftarrow{} h_{W,b}(X_{val})$ \Comment{Same for validation data.}
 \State $MSE_{val}\xleftarrow{}\sum_{i=1}^n\left(X_{val}^{(i)}-\hat{X}_{val}^{(i)}\right)^2$ 
 \State $partition\xleftarrow{} Max\_MSE\_{train}/1000$
-\State Inicializa $\alpha$, $Accuracy_{optimal}$, $MSE_{optimal}$ con valores cero.\\
+\State Initialize $\alpha$, $Accuracy_{optimal}$, $MSE_{optimal}$ with zero values.\\
 
 
-\Comment{1000 threshold partitions are tested, from 0 to $Max\_MSE\_{train}$ and the best is saved:}
-\For{i=1 to 1000}
-    \State $y_{val}^{(i)}\xleftarrow{}anomaly(MSE_{val},\alpha)$\Comment{Aplicar el algoritmo \ref{autoencoder_anomalias}, vector de 1's y 0's}
-    \State $Accuracy_{current}\xleftarrow{}$ Obtener accuracy a partir de $y_{val},y_{val}^{(i)})$
+
+\For{i=1 to 1000} \Comment{1000 threshold partitions are tested, from 0 to $Max\_MSE\_{train}$ and the best is saved:}
+    \State $y_{val}^{(i)}\xleftarrow{}anomaly(MSE_{val},\alpha)$\Comment{Apply the Algoritmh \ref{autoencoder_anomalias} (vector of 1's y 0's)}
+    \State $Accuracy_{current}\xleftarrow{}$ Get the accuracy from $(y_{val},y_{val}^{(i)})$
         \If{$Accuracy_{current}>Accuracy_{optimal}$} 
             \State $Accuracy_{optimal}\xleftarrow{}Accuracy_{current}$
             \State $\alpha\xleftarrow{}MSE_{current}$
@@ -297,7 +296,7 @@ On the other hand, to achieve our objective, we will have to determine what is t
 \EndFor\\
 \end{algorithmic}
 \textbf{Output:} Optimal threshold $\alpha$.\\
-\end{algorithm}
+\end{algorithm*}
 
 
 \newpage
@@ -308,7 +307,7 @@ On the other hand, to achieve our objective, we will have to determine what is t
 
 \subsection{Features for agents}\label{variables}
 
-To characterize those malicious processes in an instance, we study some features that may anticipate this result. These variables to be studied do not directly describe the instance, but rather the processes that are running in it. Remember that in our case, we do not have a dataset of processes classified as malicious, but the hybrid algorithm of machine learn-ing and genetic algorithms, must be able to detect and mitigate it, using the correct order just as any algorithm would do. reinforcement learning, with the difference that this time it does not learn using policy gradients. In our case, we have separated the variables into four groups.\\
+To characterize those malicious processes in an instance, we study some features that may anticipate this result. These variables to be studied do not directly describe the instance, but rather the processes that are running in it, because, we do not have a dataset of processes classified as malicious. The hybrid machine learning and genetic algorithms must be able to detect and mitigate it, using the correct order just as any algorithm would do. In our case, we have separated the variables into four groups.\\
 
 
 \subsubsection{File descriptors}
@@ -321,7 +320,7 @@ They refer to the load characteristics that the CPU may have for each process. A
 
 \subsubsection{Memory}
 
-This set of variables refer to the RAM memory consumption that each process performs. A malicious process should carry out a high consumption of this type of resources. 
+This set of variables refer to the RAM memory consumption that each process performs. A malicious process should carry out a high consumption of these type of resources. 
 
 
 \subsubsection{Temporal features}
@@ -330,7 +329,7 @@ As the name indicates, in this set are the variables that are related to time.\\
 
 \subsection{Architecture of the agents (neural networks) of the population} \label{arquitectura_agents}
 
-Following the notation in the section \ref{autoencoder_architecture}, our neural network has parameters $(W,b)=(W^{(1)},b^{(1)},W^{(2)},b^{(2)})$. That is, in our case, we have $W^{(1)} \in \mathbb {R}^{15x8}$, while $ W^{(2)} \in \mathbb {R}^{1x15}$. For our case, we use the softmax function as a network hypothesis. That is, we will hypothesize $ h: \ mathbb {R}^ {2} \ rightarrow [0,1] ^ 2 $ as the softmax function of the last layer of each neural network: 
+Following the notation in the section \ref{autoencoder_architecture}, our neural network has parameters $(W,b)=(W^{(1)},b^{(1)},W^{(2)},b^{(2)})$. That is, we have $W^{(1)} \in \mathbb {R}^{15x8}$, while $ W^{(2)} \in \mathbb {R}^{1x15}$. We use a softmax function as a network hypothesis. Thus, we will hypothesize $ h: \mathbb {R}^ {2} \rightarrow [0,1] ^ 2 $ as the softmax function of the last layer of each neural network: 
 \begin{equation}\label{softmax}
 h_{W,b}(x)=\left(\frac{e^{a_1^{(3)}}}{\sum_{j=1}^2 e^{a_j^{(3)}}},\frac{e^{a_2^{(3)}}}{\sum_{j=1}^2 e^{a_j^{(3)}}}\right)
 \end{equation}
@@ -338,8 +337,10 @@ h_{W,b}(x)=\left(\frac{e^{a_1^{(3)}}}{\sum_{j=1}^2 e^{a_j^{(3)}}},\frac{e^{a_2^{
 
 Therefore, for the logical bomb attack, $n^{[2]}=2$ because what we will obtain will be a probability vector as follows:
 \begin{align*}
-    (P_{\texttt{no}},P_{\texttt{kill}})=(&P(\texttt{no kill process } | X=x_1,\ldots,x_n),\\
-                                         &P(\texttt{kill process } | X=x_1,\ldots,x_n))
+    (P_{\texttt{no}},P_{\texttt{kill}})=(&P(\texttt{no kill process } | \\
+									    & X=x_1,\ldots,x_n),\\
+                                         &P(\texttt{kill process } | \\
+                                         & X=x_1,\ldots,x_n))
 \end{align*}
 
 such that  $P_{\texttt{no}}+P_{\texttt{kill}}=1$, where $x_i$ are the monitored variables for that process, defined in section \ref{variables}. So the activation function in the last hidden layer will be given by the function softmax \ref{softmax}. \\
@@ -378,11 +379,11 @@ In our case, the neural network that we have chosen can be seen in the diagram w
 
 \subsection{Evolving Neural Networks}
 
-In our case, each individual/agent is a neural network known as a multilayer perceptron (MLP) with $n^{[0]}$ \textit{input units} (neurons in the input layer). In our case $n^{[0]}=8$, this due to the variables of the processes to analyze (See section \ref{variables}), $n^{[1]}=15$ \textit{hidden units} (neurons in the hidden layer) this with the intention that in the hidden layer we have twice as many neurons as in the input layer, and $n^{[2]}=2$ \textit{output units} (neurons in the output layer).\\
+Therefore, each individual/agent is a neural network known as a multilayer perceptron (MLP) with $n^{[0]}=8$ \textit{input units} (neurons in the input layer), due to the variables of the processes to analyze (See section \ref{variables}), $n^{[1]}=15$ \textit{hidden units} (neurons in the hidden layer) this with the intention that in the hidden layer we have twice as many neurons as in the input layer, and $n^{[2]}=2$ \textit{output units} (neurons in the output layer).\\
 
 \subsection{Initialization}\label{sec_init}
 
-We will have for each generation, $\lambda$ neural networks (initial population size), where $\lambda$ will be the maximum number of instances that can be virtualized in our environment according to computer resources. The initialization of the weights $W_{ij}^{[l]}$ of the $\lambda$ neural networks is done using the general rule to establish the weights in a neural network, which is to establish them in such a way that they are close from scratch without being too small, for this, we define the function \textsc{HeWeights} as follows: \\
+We will have for each generation, $\lambda$ neural networks (initial population size), where $\lambda$ will be the maximum number of instances that can be virtualized in our environment according to computer resources. The initialization of the weights $W_{ij}^{[l]}$ of the $\lambda$ neural networks is done using the general rule to establish the weights in a neural network, which is to establish them in such a way that they are close from scratch without being too small. For this, we define the function \textsc{HeWeights} as follows: \\
 
 
 \begin{algorithm}[h!]
@@ -397,7 +398,7 @@ We will have for each generation, $\lambda$ neural networks (initial population 
 \end{algorithmic}
 \end{algorithm}
 
-Therefore, the initialization operation of the deep neuroevolution algorithm is a configuration of $\lambda$ MLP's that will have an initialization of the weights $W_{ij}^{[l]}$ with a uniform distribution as seen in the algorithm \ref{init}:
+Therefore, the initialization operation of the deep neuroevolution algorithm is a configuration of $\lambda$ MLP's with with a weights initialization $W_{ij}^{[l]}$ with uniform distribution as seen in the algorithm \ref{init}:
 
 
 \begin{algorithm}[h!]
@@ -407,7 +408,7 @@ Therefore, the initialization operation of the deep neuroevolution algorithm is 
 \State agents $\gets$ \text{empty list}
 \For{$i = 1,\ldots,\lambda$}
 \State init\_agent $\gets$ create a MLP with $n^{[0]}, n^{[1]}, n^{[2]}$ neurons in each layer and ReLU as activation function.
-\State init\_agent $\gets$ \textsc{HeWeights}(init\_agent) \Comment{function that return weights using He's initialization.}
+\State init\_agent $\gets$ \textsc{HeWeights}(init\_agent) \Comment{function that returns weights using He's initialization.}
 \State agents[i] $\gets$ init\_agent \Comment{add to list the agent initialized}
 \EndFor
 \end{algorithmic}
@@ -419,9 +420,9 @@ Therefore, the initialization operation of the deep neuroevolution algorithm is 
 
 \subsubsection{Evaluation}\label{evaluacion}
 
-This operation is the one that indicates how good are the agents that result from the initialization or after each operation (selection, crossing, mutation, elitism). For this, we have adjusted a machine learning model trained only with healthy values (without infecting the virtual instance) of the machine. This is where the autoencoder steps in to provide a measure through mean square error, which we have detailed in Section \ref{autoencoder_section}.\\
+This operation indicates ``how good'' are the agents that result from the initialization or after each operation (selection, crossing, mutation, elitism). For this, the pretained autoencoder with healthy data. This is where the autoencoder steps in to provide a measure through mean square error as we have detailed in Section \ref{autoencoder_section}.\\
 
-The objective of this model is that it be able to provide a measure that allows determining an anomaly in the data of the virtual instances. For this we have based on the \ textit {mean square error} (MSE) between the input data ${x_1,x_2,x_3,\ldots}$ of the autoencoder (instance data) and the data at the output of the autoencoder ${\hat{x}_1,\hat{x}_2,\hat{x}_3,\ldots}$. \\
+The goal of this model is to be able to provide a measure that allows determining anomalies in the data of the virtual instances. For this we have based on the \textit{mean square error} (MSE) between the input data ${x_1,x_2,x_3,\ldots}$ of the autoencoder (instance data) and the data at the output of the autoencoder ${\hat{x}_1,\hat{x}_2,\hat{x}_3,\ldots}$. \\
 
 Therefore, the evaluation operator or \textit{fitness function} of the Deep Neuroevolution algorithm will be given by: \\
 \begin{equation}\label{fitness}
@@ -435,25 +436,25 @@ where ${x_1,x_2,x_3,\ldots}$ are the input data of the autoencoder (instance dat
 
 After the evaluation, those individuals/agents (from the $n$ neural networks) with the best fitness (\ref{fitness}) should be selected, in our case, a fitness closer to zero will be an indicator of better agent. \\
 
-Now, within the operations that we will define are two of the most important: Selection and Crossing. For the first operation, the name is quite intuitive and what is sought is to select the best agents according to the fitness function (the closer to zero, the better). For our case, we select the best $n_{top}$ where
+Now, within the operations that we will define are two of the most important: Selection and Crossing. For the first operation, the name is quite intuitive and it seeks to select the best agents according to the fitness function (the closer to zero, the better). We will select the best $n_{top}$ agents where
 \begin{equation}\label{n_top}
     n_{top}=\left\llbracket\frac{-1+\sqrt{1+4\cdot2\cdot \lambda}}{2}\right\rrbracket+1
 \end{equation}
 
-and $\llbracket x\rrbracket$ is the \textit{floor} function. This is because the crossover operation (which we explain later) needs to reproduce $\lambda-1$ agents from the best ones, which requires a number $n_{top}$ such that $\sum_{i=1}^{n_{top}} i=\lambda$. Therefore, the equation \ref{n_top} is nothing more than the solution of $\frac{n_{top}(n_{top}+1)}{2}=\lambda$, where $\lambda$ is the number of agents in the initial population $P_0$. \\
+and $\llbracket x\rrbracket$ is the \textit{floor} function. This is because the crossover operation needs to reproduce $\lambda-1$ agents from the best ones, which requires a number $n_{top}$ such that $\sum_{i=1}^{n_{top}} i=\lambda$. Therefore, the equation \ref{n_top} is nothing more than the solution of the equation $\frac{n_{top}(n_{top}+1)}{2}=\lambda$, where $\lambda$ is the number of agents in the initial population $P_0$. \\
 
-The crossing operation we have defined from the best $n_{top}$ agents, it is intended from these to create a population of size $\lambda-1$ crossing the weights $W_{ij}$ of an agent ``father'' and several ``mother'' agents with a probability of $0.5$. This is nothing more than a Bernoulli trial where a coin is tossed, if a result comes out, the son will have the weight $W_{ij}$ of the father, otherwise he will keep the weight $W_{ij}$ of the mother.
-
-
+The crossing operation we have defined from the best $n_{top}$ seeks to create a population of size $\lambda-1$  crossing the weights $W_{ij}$ of an agent ``father'' and several ``mother'' agents with a probability of $0.5$. This is nothing more than a Bernoulli event, where a coin is tossed, if a result comes out, the son will have the weight $W_{ij}$ of the father, otherwise he will keep the weight $W_{ij}$ of the mother.
 
 
-\begin{algorithm}[h!]
+
+
+\begin{algorithm}
 \caption{Selection and Crossover}\label{selec_cross}
 \begin{algorithmic}[1]
 \State $n_{top}=\left\llbracket\frac{-1+\sqrt{1+4\cdot2\cdot\lambda}}{2}\right\rrbracket+1$
 \Function{Selection and crossover}{agents,$n_{top}$}
 \State agents\_top= select best $n_{top}$ agents from the list agents.
-\State childrens= empty list
+\State children= empty list
 \State max\_id = 1 \Comment{Initialize a loop end parameter}
 \While {\texttt{max\_id<=n-1}}
 \For{\texttt{i = 1,\ldots,max\_id}}
@@ -466,10 +467,10 @@ The crossing operation we have defined from the best $n_{top}$ agents, it is int
 \State \textbf{Else}
 \State \hspace{0.5cm} $W_{ij}^{[children]}$=$W_{ij}^{[mother]}$ \Comment{Update each weight of each unit}
 \EndFor
-childrens[i]=new\_children
+children[i]=new\_children
 \EndFor
 \EndWhile
-\State \textbf{Return} childrens
+\State \textbf{Return} children
 \EndFunction
 \end{algorithmic}
 \end{algorithm}
@@ -478,11 +479,11 @@ childrens[i]=new\_children
 
 \subsubsection{Mutation}
 
-In evolutionary algorithms it is convenient that for the new descendants formed by selection and crossing, some of their genes (in our case the weights of the units or neurons) can be subjected to a mutation with a low random probability of a change. This implies that some weights of the neurons of the initial $\lambda$ neural networks, will be modified with a ``small'' change that depends on a value known as \textit{mutation power} \cite{deepGA} to which we will call $\sigma$. \\
+In evolutionary algorithms it is convenient that for the new descendants formed by selection and crossing, some of their genes (in our case the weights or the neurons) can be subjected to a mutation with a low random probability of a change. This implies that some weights of the neurons of the initial $\lambda$ neural networks, will be modified with a ``small'' change that depends on a value known as \textit{mutation power} \cite{deepGA}. We will call this hyperparameter $\sigma$. \\
 
 The mutation occurs to maintain diversity within the population, without this operation, the values of the weights $W_{ij}$ of the neural networks (agents) would only maintain the values obtained from initialization.\\
 
-That is, we are adding to the weights $W_{ij}$ of the units (neurons) of each neural network, a value $\sigma\cdot \mathcal{N}(0,1)$ with $\sigma=0.02$ . For properties of the normal distribution, we will have to simply add a value with distribution $\mathcal{N}(0,0.02^2)=\mathcal{N}(0,0.0004)$. As you can see, this very small value will prevent the weights from having extreme changes but at the same time it will allow these weights to vary beyond the values they have taken in the initialization operation (Algorithm \ref{init}). This value $\sigma$ could be considered as the analogous value to the learning rate in the case of gradient descent We have therefore defined the following algorithm: \\
+That is, we are adding to the weights $W_{ij}$ of the units (neurons) of each neural network, a value $\sigma\cdot \mathcal{N}(0,1)$ with $\sigma=0.02$ . For properties of the normal distribution, we will have to simply add a value with distribution $\mathcal{N}(0,0.02^2)=\mathcal{N}(0,0.0004)$. This very small value will prevent the weights from having extreme changes but at the same time it will allow these weights to vary beyond the values they have taken in the initialization operation (Algorithm \ref{init}). This value $\sigma$ could be considered as the analogous value to the learning rate in the case of stocasthic gradient descent. Therefore we define the following algorithm: \\
 
 
 
@@ -490,18 +491,18 @@ That is, we are adding to the weights $W_{ij}$ of the units (neurons) of each ne
 \caption{Mutation} \label{mutation}
 \begin{algorithmic}[1]
 \State $\sigma=0.02$ \Comment{mutation power}
-\State mutated\_childrens= empty list
-    \Function{mutation}{childrens} \Comment{As input it needs the list returned by selection and crossover operation (Algorithm \ref{selec_cross})}
-        \For{i = 1,\ldots,total of childrens}
+\State mutated\_children= empty list
+    \Function{mutation}{children} \Comment{As input it needs the list returned by selection and crossover operation (Algorithm \ref{selec_cross})}
+        \For{i = 1,\ldots,total of children}
             \For{each weight $W_{ij}$ of unit of neural network}
                 \State $r_{norm}$= get random number $\mathcal{N}(0,1)$
                 \State $W_{ij}$=$W_{ij}+\sigma\cdot r_{norm}$ \Comment{Update each weight of each unit}
                 \State new\_children=assign to this neural network the weights $W_{ij}$.
             
+\EndFor \\
+        \State mutated\_children[i]=new\_children
 \EndFor
-        \State mutated\_childrens[i]=new\_children
-\EndFor
-\State \textbf{Return} mutated\_childrens
+\State \textbf{Return} mutated\_children
 \EndFunction
 \end{algorithmic}
 \end{algorithm}
@@ -510,7 +511,7 @@ That is, we are adding to the weights $W_{ij}$ of the units (neurons) of each ne
 
 \subsubsection{Elitism}
 
-Elitism in our case refers to a selection of the neural network that is best able to mitigate an attack. For this, from the $n_{top}$ top agents that are selected (\ref{n_top}), what is known as \textit{tournament elitism} is performed. That is, we tested a total of $m$ times each agent (neural network) in the virtualized environment with the infected instances and the average of the \textit{fitness} \ref{fitness} is calculated for these $m$ times. This average will determine which is the best after the $m$ executions. Finally, the elite agent (neural network) is added to the list of child agents (mutated\_childrens), thus keeping us the best of all \textbf{unmutated} and without any alteration, allowing us to keep the one with the best mitigation characteristics of attacks. \\
+Elitism in our case refers to a selection of the neural network which is the best agent able to mitigate an attack. From the $n_{top}$ top agents that are selected (\ref{n_top}), we perform what is known as \textit{tournament elitism}. That is, we tested a total of $m$ times each agent (neural network) in the virtualized environment with the infected instances and the average of the \textit{fitness} \ref{fitness} is calculated for these $m$ times. This average will determine which is the best after the $m$ executions. Finally, the elite agent (neural network) is added to the list of child agents (mutated\_children), thus keeping us the best of all \textbf{unmutated} and without any alteration, allowing us to keep the one with the best mitigation characteristics of attacks. \\
 
 
 
@@ -518,7 +519,7 @@ Elitism in our case refers to a selection of the neural network that is best abl
 \caption{Elitism}\label{elitismo}
 \begin{algorithmic}[1]
 \State $n_{top}=\left\llbracket\frac{-1+\sqrt{1+4\cdot2\cdot \lambda}}{2}\right\rrbracket+1$
-\Function{Elitism}{mutated\_childrens,agents,$n_{top}$}
+\Function{Elitism}{mutated\_children,agents,$n_{top}$}
 \State agents\_top= select best $n_{top}$ agents from the list agents.
 \For{i = 1,..., $n_{top}$}
     \State agent\_test = agents[i]
@@ -532,13 +533,13 @@ Elitism in our case refers to a selection of the neural network that is best abl
 \EndFor
 \State fitness\_mean[i]=$\frac{1}{m}\sum^m_{j=1}$fitness\_agent[j]
 \State elite=select agent with best fitness\_mean
-\State new\_generation=add elite to mutated\_childrens
+\State new\_generation=add elite to mutated\_children
 \State \textbf{Return} new\_generation
 \EndFunction
 \end{algorithmic}
 \end{algorithm}
 
-On the other hand, we want to penalize when the neural network decides to kill all the processes of the instance, this is because if we do not do this, the neural network will learn to reduce the MSE given by the autoencoder based on kill all the processes of the instance, so when the agent applies \texttt{kill} to all processes, the command will be changed to not kill any processes. Finally the scheme of the neuroevolution algorithm can be seen in Figure \ref{fig:diagneuroevolution}.
+On the other hand, we must penalize when the agent decides to kill all the processes of the instance, otherwise the neural network will learn to reduce the MSE given by the autoencoder based on kill all the processes of the instance, so when the agent applies \texttt{kill} to all processes, the command will be changed to not kill any processes. Finally the scheme of the neuroevolution algorithm can be seen in Figure \ref{fig:diagneuroevolution}.
 
 
 \begin{figure*}[h!]
@@ -559,7 +560,7 @@ In this section, we present the results of the experiments carried out following
 
 \subsection{Feature selection}
 
-Due to the high dimensionality of the dataset, it is necessary to discard certain features in order to improve the perfomance of the model. Firstly, to reduce the number of variables, a previous study of each variable was made, comparing the results between the different states of the machine. The first variables to delete were those are not affected in either state of the virtual instance. In this way, 26 of the 97 initial variables that only accounted for computational load when training the neural network were eliminated, in addition to overtraining. \\
+Due to the high dimensionality of the dataset, it is necessary to discard certain features in order to improve the perfomance of the model. Firstly, to reduce the number of variables, a previous study of each variable was made, comparing the results between the different states of each instance. The first variables to delete were those are not affected in either state of the virtual instance, i.e, they keep the same value throughout the data extraction. With this, 26 of the 97 initial variables were deleted. \\
 
 It is well known that multicollinearity in data considerably reduces the predictive power of many machine learning models. Despite the fact that an autoencoder is not a linear model, it is convenient to reduce this high dimensionality of the data in any case and an important measure to do so, is through correlation. \\
 
@@ -568,7 +569,7 @@ It is well known that multicollinearity in data considerably reduces the predict
 \begin{table*}[h!]
 \begin{tabular}{ccc}
 \hline
-Variable 1 & Variable 2 & Correlación \\ \hline
+Variable 1 & Variable 2 & Correlation \\ \hline
 load 15 & load norm 15 & 1.0\\ 
 load norm 1 & load 1 & 1.0\\ 
 memory used bytes & memory free & 1.0\\ 
@@ -611,18 +612,18 @@ diskio iostat queue avg size & diskio iostat busy & 0.90\\ \hline
 \caption{Pearson correlation ($\rho$) table for variables with correlation coefficient $\rho>0.90$.}
 \end{table*}
 
-In this way, it was first established that variables were strongly related to each other (a correlation coefficient higher than 0.7) and once the relationships were obtained, a study was carried out on the variables themselves, that is, the definition of the variables themselves. Thus, if two variables explained the same information, one of them would be discarded. It was also tried to have at least one representative variable for each module in order to have more complete information on the system. After this study, a total of 58 out of 97 variables were discarded.
+In this way, it was first established that variables were strongly related to each other (a pearson's correlation coefficient higher than 0.7) and once the relationships were obtained, a study was carried out on the variables themselves, that is, the definition of the variables themselves. Thus, if two variables explained the same information, one of them would be discarded. It was also tried to have at least one representative variable for each module in order to have more complete information on the system. After this study, a total of 58 out of 97 variables were discarded.
 
 
 \subsection{Results}
 
 
-The results show that it is possible to determine the state of a instance using autoencoders and also detect malicious processes that affect the normal behaviour of a computer. So the results are presented in two steps: anomaly detection resultas and evolutionary algorithms for neural networks.
+The results show that it is possible to determine the state of a instance using autoencoders and also detect malicious processes that affect the normal behaviour of a computer. So the results are presented in two steps: anomaly detection results and evolutionary algorithms for neural networks.
 
 
 \subsubsection{Autoencoder model results}\label{results_autoencoder}
 
-The autoencoder model was trained with only the healthy state of the data using the stochastic gradient descent algorithm with 60 epochs. The mean square error was monitored during the training process, the results are shown in Figure \ref{fig:autoencoder_variable_selected}.
+The autoencoder model was trained with only the healthy state of the data using the stochastic gradient descent algorithm with 60 epochs. The mean square error was monitored during the training process, the results are shown in Figure \ref{fig:autoencoder_variable_selected}.\\
 
 
 
@@ -633,7 +634,7 @@ The autoencoder model was trained with only the healthy state of the data using 
 \label{fig:autoencoder_variable_selected}
 \end{figure}
 
-After training the model, it is necessary to determine the decision threshold from which the state of the machine is considered an anomaly, for this, the Algorithm \ref{obtener_umbral} was used, giving a threshold $\alpha\approx 1.1945\ldots$, the closer value to this the state of the instance is, the greater the consideration will be as a healthy state of the instance. Therefore the agents of the evolutionary algorithm should eliminate the process that is affecting the instance and will be selected as the best ``parents'' those that after killing the process, lead to the state of the instance at values close to this $\alpha$ value. The resuls are shown in Figure \ref{fig:reconstuction_LB}.
+After the model is trained, it is necessary to determine the decision threshold from which the state of the machine is considered an anomaly, for this, the Algorithm \ref{obtener_umbral} was used. Which gave as a result an optimal threshold $\alpha\approx 1.1945\ldots$, the closer value to this the state of the instance is, the greater the consideration will be as a healthy state of the instance. Therefore, the best ``parents'' will be those that after killing the processes, lead to the state of the instances at values closer to this $\alpha$. After the data extraction of anomaly values, the results of this analysis can be seen in Figure \ref{fig:reconstuction_LB}.\\
 
 \begin{figure}[h!]
 \centering
@@ -642,7 +643,7 @@ After training the model, it is necessary to determine the decision threshold fr
 \label{fig:reconstuction_LB}
 \end{figure}
 
-With this decision threshold, a confusion matrix is obtained in order to try using the autoencoder also as a classifier. The results are shown in Table \ref{confusion_matrix}. \\
+With this decision threshold, a confusion matrix is obtained in order to consider the autoencoder not only as a anomaly detector but also as a classifier and to provide results about classification metrics. The results are shown in Table \ref{confusion_matrix}. \\
 
 \begin{table}[h!]
 \centering
@@ -650,22 +651,24 @@ With this decision threshold, a confusion matrix is obtained in order to try usi
                                                 &                                 & \multicolumn{2}{c}{Real}                                       \\ \cline{3-4} 
                                                 & \multicolumn{1}{l|}{}           & \multicolumn{1}{l|}{L. Bomb} & \multicolumn{1}{l|}{Healthy} \\ \cline{2-4} 
 \multicolumn{1}{c|}{Predicted} & \multicolumn{1}{l|}{L. Bomb} & \multicolumn{1}{l|}{1629}       & \multicolumn{1}{l|}{174}     \\ \cline{2-4} 
-\multicolumn{1}{c|}{}                           & \multicolumn{1}{l|}{Healthy}    & \multicolumn{1}{l|}{135}        & \multicolumn{1}{l|}{5457}    \\ \cline{2-4} 
-\end{tabular}
-\caption{Confusion matrix build from threshold decision $\alpha$. The classification is done following if $MSE>\alpha\implies$ infected instance.}
+\multicolumn{1}{c|}{}                           & \multicolumn{1}{l|}{Healthy}    & \multicolumn{1}{l|}{135}        & \multicolumn{1}{l|}{5457}    \\ \cline{2-4}
+\end{tabular} 
+\caption{Confusion matrix built from threshold decision $\alpha$. The classification is done considering  $MSE>\alpha\implies$ as an infected instance.}
 \label{confusion_matrix}
 \end{table}
 
 Then, a 10-fold cross validation is done and finally we get the following performance measures (mean of the 10-fold results), which usually are taken into account to determine the goodness of fit.
 
 
-\begin{alignat*}{3}
-\hspace{-0.3cm} Accuracy  &= \hspace{0.9cm}\frac{\text{Correctly classified}}{\text{Total of samples}}           &&=&\text{ }& 0.9632 \\
-\hspace{-0.3cm} Precision &=\frac{\text{Correctly classified as infected}}{\text{Samples predicted as infected}} &&=&\text{ }& 0.9335\\
-\hspace{-0.3cm} Recall    &=\frac{\text{Correctly classified as infected}}{\text{Samples actually are infected}} &&=&\text{ }& 0.9136\\
-\end{alignat*}
+\begin{equation*}
+\begin{aligned}
+\hspace{-0.3cm} Accuracy  &= \hspace{0.5cm} \frac{\text{\tiny{Correctly classified}}}{\text{\tiny{Total of samples}}}           &= 0.9632 \\
+\hspace{-0.3cm} Precision &=\frac{\text{\tiny{Correctly classified as infected}}}{\text{\tiny{Samples predicted as infected}}} &= 0.9335\\
+\hspace{-0.3cm} Recall    &=\frac{\text{\tiny{Correctly classified as infected}}}{\text{\tiny{Samples actually are infected}}} &= 0.9136\\
+\end{aligned}
+\end{equation*}
 
-These results show that our autoencoder model can classify states of the virtual machines using anomaly detection and being trained just with one kind of data (healthy state).
+These results show that our autoencoder model can classify states of the virtual machines using anomaly detection being trained just with one kind of data (healthy state).
 
 
 \subsubsection{Neuroevolution results}
@@ -686,7 +689,9 @@ In this section we will present the most important results of this paper. We wil
 \label{fig:reward_top_agent}
 \end{figure*}
 
-From the generation 10, it is appreciated (Figure \ref{fig:reward_top_agent}) that the best agent is able to reduce the mean squared error at the output of the autoencoder. For this, the best agent kills the processes that are considered by it as malicious, so the objective is not only kill all processes but kill the specific process who is affecting the virtual instance, so as we can se in Figure \ref{fig:reward_top_agent} the best agent reduce the number of processes that it pretends to kill until finally kill just the malicious process.\\
+In the Figure \ref{fig:reward_top_agent}, we can see how the Mean Square Error between the input data and the output provided by the autoenconder is reduced almost to zero which proves the desired result, i.e. the best agent is killing the malicious process, reducing the effect of the attack. \\
+
+On the other hand, an agent that kills all the processes will also reduce the effect of the threat, but the instance will be unusable which is not our goal. Therefore, we can see in Figure \ref{fig:reward_top_agent} how the number of processes killed by the best agent are reduced in each generation, which means it is reducing the effect of the threat while killing the right process (malicious).\\
 
 
 \section{Conclusions}
