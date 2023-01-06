@@ -82,15 +82,15 @@ and
 \runningauthor{H. Navarro et al.}
 \address[A]{Research and Development Lab, Vision Analytics, Avenida de Europa 19, 28224, Pozuelo de Alarcón, Madrid,\\ Spain\\
 E-mail: contact@henrynavarro.org}
-\address[B]{Research and Development Labs, Capgemini Engineering, Calle Campezo, 1, 28022, Madrid, Spain.\\
+\address[B]{R\&D Department, Capgemini Engineering, Calle Campezo, 1, 28022, Madrid, Spain.\\
 E-mail: engineering@capgemini.com}
 
 \begin{abstract}
-Threat detection is one of the main focus of several studies in the cybersecurity area and it has become one of the main focuses of researchars. Threat may occur in any forms like viruses or phishing attack with different purposes. Once the intruder has filtered into our system, the primary step is to try to detect the malicious process to prevent it from causing damage to our system. In this paper, we present a real time hybrid method using deep neural networks to obtain a fitness function and evolutionary algorithms to detect and kill malicious processes on a simulated network system.
+Threat detection is a crucial aspect of cybersecurity research, and researchers have dedicated significant efforts to developing effective methods for identifying and responding to various types of threats, such as viruses and phishing attacks. Once an intruder has gained access to a system, it is essential to detect any malicious processes and prevent them from causing harm. In this paper, it is presented a real-time hybrid method for detecting and mitigating malicious processes on a simulated network system. This approach combines deep neural networks and evolutionary algorithms with an autoencoder-based fitness function and detects in real-time anomalous behavior in each device connected to the network.
 \end{abstract}
 
 \begin{keyword}
-Neuroevolution \sep Genetic Algorithms \sep Threat detection \sep Autoencoders
+Neuroevolution \sep Genetic Algorithms \sep Threat detection \sep Autoencoders \sep Deep Neural Networks
 \end{keyword}
 
 \end{frontmatter}
@@ -98,48 +98,54 @@ Neuroevolution \sep Genetic Algorithms \sep Threat detection \sep Autoencoders
 
 
 \section{Introduction}
-Deep neuroevolution, autoencoders, and cybersecurity are three interrelated areas that have the potential to significantly impact the field of information security. Deep neuroevolution refers to the use of evolutionary algorithms to optimize artificial neural networks, which can be used to improve the accuracy and efficiency of various machine learning tasks. Autoencoders, on the other hand, are a type of neural network that can be used to learn efficient representations of data, and have been applied to a wide range of problems including dimensionality reduction, anomaly detection, and data compression. In the context of cybersecurity, these techniques can be used to improve the ability of systems to detect and mitigate various cyber threats, such as malware, phishing attacks, and network intrusions.\\
+Deep neuroevolution, autoencoders, and cybersecurity are three interrelated areas that have the potential to significantly impact the field of information security. Deep neuroevolution refers to the use of evolutionary algorithms to optimize artificial neural networks, which can be used to improve the accuracy and efficiency of various machine learning tasks. Autoencoders, on the other hand, are a type of neural network that can be used to learn efficient representations of data, and have been applied to a wide range of problems including dimensionality reduction, anomaly detection, and data compression. In the context of cybersecurity, these techniques can be used to improve the ability of systems to detect and mitigate various cyber threats, such as malware, phishing attacks, and network intrusions.
 
-In order to simulate a network, attack computers with a malicious process and have an environment under control, we have created a virtual network with 20 virtual instances using open source softwares. We start from the fact that the malicious process has already infiltrated in our system either using ransomware, social engineering or any other common technique in modern cybersecurity. We collect the system data of these virtual instances using open source libraries. This data will be used to train neural networks, detect and kill the malicious process using evolutionary algorithms based on deep neuroevolution.\\
+To study the effects of malicious processes on a network, a virtual network was created consisting of 20 virtual instances using open source software. It was assumed that the malicious process had already infiltrated the system using techniques such as ransomware or social engineering. System data was collected from these virtual instances using open source libraries and used to train neural networks and apply evolutionary algorithms based on deep neuroevolution to detect and terminate the malicious process. This controlled environment facilitated the study of the behavior of malicious processes and the development of effective methods for detecting and responding to them
 
-Evolve neural networks has been used in different tasks but mainly in train neural networks to play video games \cite{deepGA}, \cite{neuroevolution1}, \cite{neuroevolution2}, although there are other applications as music generation \cite{neuroevolution3} and modelling biological phenomena \cite{neuroevolution4}. These neural network training methods rely on genetic algorithm operations to obtain the best agent to perform a specific task. However, there is not too much research related to this topic and cybersecurity as we will see in the section \ref{relatedwork}.\\
+Evolve neural networks has been used in different tasks but mainly in train neural networks to play video games \cite{deepGA, neuroevolution1, neuroevolution2}, although there are other applications as music generation \cite{neuroevolution3} and modelling biological phenomena \cite{neuroevolution4}. These neural network training methods rely on genetic algorithm operations to obtain the best agent to perform a specific task. However, there is not too much research related to this topic and cybersecurity as it is shown in the section \ref{relatedwork}.\\
 
-Any evolutionary algorithm needs a fitness function in order to determine what agents or individuals are the best in each generation. In our case, the best agents will be those who ``kill'' the malicious process in each generation which will result in instances which take their ``normal states''. In order to characterize this normal state, we use an ingenuous solution for this need, using an artificial neural network called autoencoder. This neural network will learn the healthy state of each instance and using the mean square error (MSE) between the inputs and outputs of the neural networks, we will know how infected is the instance, so the closer this value to zero the more healthy is the state of the instance, then we will use the best agents following this criteria. Finally, using a single command of any Linux system, we kill the process who is negatively affecting our virtual instance.
+Evolutionary algorithms rely on a fitness function to identify the best agents or individuals in each generation. In our case, the best agents are those that are able to ``kill'' the malicious process, returning the virtual instances to their ``normal states''. To determine the normal state of an instance, an autoencoder neural network is used. This network learns the healthy state of each instance and calculates the mean squared error (MSE) between its inputs and outputs. The closer the MSE is to zero, the healthier the state of the instance. The best agents are chosen according to this criterion and the malicious process is terminated using a simple command in any Linux system.
 
 
 \section{Related work}\label{relatedwork}
 
-Autoencoders are neural networks that consist of an encoder to generate a vector of features in the latent space (of smaller dimension) and from the input data and a decoder, which seeks to reconstruct the input data from this latent vector \cite{autoencoders_nlp1}. This type of neural networks are used in anomaly detection \cite{anomaly1, anomaly3},\cite{anomaly4}, natural language processing \cite{autoencoders_nlp1} and dimensionality reduction \cite{dimred1}, \cite{dimred2}.\\
+Autoencoders are neural networks that consist of an encoder to generate a vector of features in the latent space (of smaller dimension) and from the input data and a decoder, which seeks to reconstruct the input data from this latent vector \cite{autoencoders_nlp1}. This type of neural networks are used in anomaly detection \cite{anomaly1, anomaly3, anomaly4}, natural language processing \cite{autoencoders_nlp1} and dimensionality reduction \cite{dimred1, dimred2}.
 
-Other researchers have proved that autoencoders can be used to detect other threats like Denial of Services \cite{autoencoderdos}. On their paper, they use an autoencoder to classify different denial of services attacks. However, our objective is not only to classify the state of a virtual machine between two states: healthy and infected but, to get a measure to quantify how infected a virtual instance is. For this, we train this neural network just with the healthy state data and we will use the mean square error (MSE) as a fitness function to choose the best agents in threat detection, the closer this value to zero the more healthy is the state of the instance.\\
+Other researchers have demonstrated that autoencoders can be used to detect other types of threats, such as Denial of Service attacks \cite{autoencoderdos}. In their paper, they use an autoencoder to classify different types of Denial of Service attacks. Our goal is not only to classify the state of a virtual machine as healthy or infected, but also to quantify the level of infection of a virtual instance. To accomplish this, the autoencoder neural network is trained solely on healthy state data and the mean squared error (MSE) is used as a fitness function to select the best agents for threat detection. The lower the MSE, the healthier the state of the instance.
 
-As for the topic of deep neuroevolution, there is no direct application in the area of cybersecurity. However, other researchers have applied genetic algorithms to improve network security \cite{GA1, GA2, GA3}. In most of these papers, a binary gene is reached out in order to block or detect certain network attacks such as Syn-Flood, Smurf and others, for this purpose, common operations in genetic algorithms such as selection, crossover, mutation are used.\\
+As for deep neuroevolution, there are no direct applications in the field of threat mitigation. However, other researchers have used genetic algorithms to improve network security \cite{GA1, GA2, GA3}. In most of these papers, binary genes are used to block or detect certain network attacks, such as Syn-Flood and Smurf. To do so, common operations in genetic algorithms such as selection, crossover, and mutation are applied.
 
-Different investigations in malware detection have been carried out using deep neural networks for them \cite{malwarednn1, malwarednn2,malwarednn3}, however, these researchers train their models using algorithms that involve gradients. In this paper, we present another way to train a neural network that can detect a malicious process that creates idle tasks that affect common system values like CPU, memory RAM, hard drive, among others. This process is detected and killed in order to return the healthy state in a virtual instance.
+There have been several investigations into malware detection using deep neural networks \cite{malwarednn1, malwarednn2,malwarednn3}. However, these researchers usually train their models using gradient-based algorithms. In this paper, an alternative method for training a neural network to detect malicious processes that create idle tasks that affect common system values such as CPU, memory RAM, and hard drive is presented. By detecting and terminating these processes, the healthy state of a virtual instance can be restored using a genetic algorithm with an autoencoder-based fitness function.
+
+Therefore, our main contributions with this paper are:
+\begin{enumerate}
+	\item In \cite{autoencoderdos}, autoencoders are used as a classification neural network to detect and classify Denial of Service attacks. In the current paper, it is trained an autoencoder to detect anomalies caused by malicious processes that affect common parameters of the virtual instance. 
+	\item Genetic algorithms have been used to improve security \cite{GA1, GA2, GA3}, but in the proposed method, it is used an autoencoder-based fitness function to evolve neural networks and select the best agents.
+	\item In \cite{autoencoder3}, a comparison of different autoencoder architectures is conducted, while the proposed model in the current paper can detect any anomaly in each instance.
+	\item Other hybrid methods have been proposed \cite{hybrid1, hybrid2}, but these methods are only used to detect system threats, while the proposed method generates agents that mitigate system threats and are trained using a non-gradient-based algorithm.
+\end{enumerate}
 
 \section{Methodology}
 
 \subsection{Network simulation}
 
-The virtual network to emulate the attacks was built and simulated based on the fact that an intruder had already obtained access to the network and already represents an internal threat, that is, the file that executes the malicious process is already found in the virtual instances. We have virtualized a network architecture with 20 instances using an a network orchestrator with 4 physical machines.\\
+The virtual network to emulate the attacks was built and simulated based on the fact that an intruder had already obtained access to the network and already represents an internal threat, that is, the file that executes the malicious process is already found in the virtual instances. A network architecture with 20 instances has been virtualized using a network orchestrator with 4 physical machines.
 
-These instances send their system data to a NoSQL database where we monitor the variables that we explain in the next section and these are the features we use to develop our models.
+These instances send their system data to a NoSQL database where we monitor the variables that we explain in the next section and these are the features used to develop the proposed` models.
 
 \subsection{Dataset}\label{dataset_autoencoder}
 
-The dataset has been generated first extracting the normal traffic of a virtualized environment to get the ``healthy'' data that a system could have, to get this normal behaviour we used a software tool able to extract 97 features related mainly with cpu, memory ram or usage of hard drive that we split into 10 main groups. Then, the two cyber attacks have been sent to this virtualized network and extracting the data to obtain two new classes: A malicious process developed by us that we will call \textit{Logic Bomb}, which is a process that affects the regular parameters like CPU, memory, disk creating idle processes by this task.
+To create the dataset, the normal traffic was first extracted from a virtualized environment to obtain "healthy" data for the system. A software tool was used to extract 97 features related mainly to CPU usage, memory RAM usage, and hard drive usage, which were divided into 10 main groups. Next, a cyber attack was introduced into each instance of the virtualized network and data was extracted to create an additional class: a malicious process called  ``Logic Bomb'', which was developed by the team. It affects the regular parameters such as CPU, memory, and disk by creating idle processes.
 
 \subsubsection{Central Processing Unit (CPU) features}
 They refer to the load characteristics that the CPU of the instance may have. A malicious process acting on the instances is expected to drive CPU usage across the entire instance in order to crash it.\\
 
 
 \subsubsection{Core features}
-
 These features are similar to CPU variables, with the difference that they are disaggregated by core. Due to how virtualized instances have been created (1GB of memory, 1 core only), these variables are expected to have a high correlation with the CPU variables.
 
 
 \subsubsection{Disk Input/Output (Disk I/O) features}
-
 Disk I / O operations include both read and write or Input / Output (usually defined in KB / s) involving a physical disk. In simple words, it is the speed with which the data transfer takes place between the hard disk drive and RAM, or basically it measures the input / output time of the active disk. It is a performance measure and is therefore used to characterize storage disks as HDD, SSD, and SAN. A malicious process is expected to constantly perform read and write operations to cause a saturation of this hardware. \\
 
 \subsubsection{Entropy}
@@ -169,12 +175,12 @@ An autoencoder neural network is an unsupervised learning algorithm that applies
 
 \subsection{Autoencoder architecture}\label{autoencoder_architecture}
 
-An autoencoder consists of two parts, an encoder that we will denote as $ f_{\phi} $ and a decoder that we denote with $ g_{\theta} $. An autoencoder neural network will be denoted as $ h_{W, b} = g_\theta \circ f_\phi$, where $W$ and $b$ are the weight matrix and the vector ``bias'' or bias of the neural network and $h$ is the final transformation function or hypothesis. \\
+An autoencoder consists of two parts, an encoder that it is denoted as $ f_{\phi} $ and a decoder that it is denoted as $ g_{\theta} $. An autoencoder neural network will be denoted as $ h_{W, b} = g_\theta \circ f_\phi$, where $W$ and $b$ are the weight matrix and the vector ``bias'' or bias of the neural network and $h$ is the final transformation function or hypothesis. 
 
-We will denote $n_l$ as the number of layers in our network. In our case, we have taken a network with three hidden layers, therefore $n_l=5$. We denote the $l$-th layer as $L_l$, therefore $L_1$ is the input layer and $L_{n_l}$ is the denoting the output layer. We also denote the parameters $(W,b)=(W^{(i)},b^{(i)})$, with $i=1,\ldots,5$ and where $W^{(l)}$ are the weight matrices (weights) of each layer and $b^{(i)}$ the bias vector (bias) associated with the connections between the unit (neuron) $j$ in layer $l$, and unit $i$ in layer $l+1$. Likewise, we denote $f_{\cdot l}$ the activation function that ``connects'' layer $l-1$ with the layer $l$. And finally, we denote $s_i$ as the number of neurons (units) of the layer $i$. \\
-
-
-Due to the high dimensionality of the dataset that we have used, a selection of variables is made, which we explain in the results section \ref{results_autoencoder}. However, we have selected the number of neurons in such a way that in the encoder part $s_i=\left\llbracket\frac{s_{i-1}}{2}\right\rrbracket$, while for the part of the decoder $s_i=\left\llbracket 2\times s_{i-1} \right\rrbracket$, where $\llbracket \cdot \rrbracket$ represents the integer part of a real number. \\
+Next, $n_l$ denotes the number of layers in our network.
+In this case, a network with three hidden layers was taken, therefore $n_l=5$. The $l$-th layer is denoted as $L_l$, therefore $L_1$ is the input layer and $L_{n_l}$ denotes the output layer. The parameters $(W,b)=(W^{(i)},b^{(i)})$, with $i=1,\ldots,5$ are also denoted, where $W^{(l)}$ represents the weight matrices (weights) of each layer and $b^{(i)}$ represents the bias vector (bias) associated with the connections between unit (neuron) $j$ in layer $l$ and unit $i$ in layer $l+1$. Similarly, the activation function that "connects" layer $l-1$ with layer $l$ is denoted as $f_{\cdot l}$. Finally, $s_i$ denotes the number of neurons (units) in layer $i$.
+ 
+To reduce the dimensionality of the dataset, a selection of variables is made, as explained in the results section \ref{results_autoencoder}. The number of neurons in the encoder is selected such that $s_i=\left\llbracket\frac{s_{i-1}}{2}\right\rrbracket$ (half the number of neurons in the previous layer), while in the decoder, $s_i=\left\llbracket 2\times s_{i-1} \right\rrbracket$ (double the number of neurons in the previous layer). The symbol $\llbracket \cdot \rrbracket$ represents the integer part of a real number.
 
 Like any neural network, it requires activation functions that allow connecting all the units (neurons) of each layer. For our autoencoder, we have selected the activation functions as follows:
 \begin{eqnarray*}
@@ -184,12 +190,12 @@ f_{\cdot 4} &=& f_{\cdot 2} = \tanh(x)=\frac{e^{x}-e^{-x}}{ e^{x}+e^{-x}},\\
 f_{\cdot 5} &=& f_{\cdot 3} = ReLU(x) = x^+ = \max(0, x)\\
 \end{eqnarray*}
 
-We will write $a_i^{(l)}$ to denote the activation (the value at the output) of the unit $i$ in the layer $l$. For $l=1$, we use $a_i^{(1)}=x_i$ to denote the $i$-th input. That is to say,
+$a_i^{(l)}$ denotes the activation (the value at the output) of the unit $i$ in the layer $l$. For $l=1$, the notation $a_i^{(1)}=x_i$ is used to denote the $i$-th input. That is to say,
 \begin{eqnarray*}
 z^{(l)}&=&W^{(l-1)}a^{(l-1)}+b^{(l-1)}\\
 a^{(l)}&=&f_{\cdot l}(z^{(l)})
 \end{eqnarray*}
-Graphically, the architecture of the autoencoder can be seen in figure \ref{fig:architecture_autoencoder}. \\
+Graphically, the architecture of the autoencoder can be seen in Figure \ref{fig:architecture_autoencoder}.
 
 
 \begin{figure*}[h!]
@@ -232,7 +238,7 @@ Graphically, the architecture of the autoencoder can be seen in figure \ref{fig:
 \end{figure*}
 
 
-The autoencoder is trained with the well-known algorithm called stochastic gradient descent  with 60 epochs. The next step is to determine the decision threshold from which the instances will be considered as infected. That is, values greater than this threshold will be infected instances or instances with anomalous behavior. For this, we use the mean square error between the input data and the output of the trained autoencoder as we show in the Algorithm \ref{autoencoder_anomalias}.\\
+The autoencoder is trained using the well-known stochastic gradient descent algorithm with 60 epochs. The next step is to determine the decision threshold that will be used to classify instances as infected. That is, any instance with a value greater than this threshold will be considered infected or exhibiting anomalous behavior. To determine this threshold, the mean squared error between the input data and the output of the trained autoencoder is used, as shown in Algorithm \ref{autoencoder_anomalias}.
 
 
 \begin{algorithm}[h!]
@@ -255,7 +261,7 @@ The autoencoder is trained with the well-known algorithm called stochastic gradi
 \end{algorithm}
 
 
-On the other hand, to achieve our objective, we will have to determine what is that threshold from which we will say that there is an anomaly. To find this decision threshold, we seek to test for all mean square error in our training data (healthy) and determine which of them is the optimal one that maximizes the accuracy in the confusion matrix, as shown in the Algorithm. \ref{obtener_umbral}.
+Additionally, to meet the objective, it is necessary to determine the threshold at which an anomaly can be identified. To find this decision threshold, the mean squared errors for the training data (healthy instances) will be tested and the optimal one that maximizes accuracy in the confusion matrix will be determined, as shown in Algorithm \ref{obtener_umbral}.
 
 
 \begin{algorithm}
@@ -294,7 +300,7 @@ On the other hand, to achieve our objective, we will have to determine what is t
 
 \subsection{Features for agents}\label{variables}
 
-To characterize those malicious processes in an instance, we study some features that may anticipate this result. These variables to be studied do not directly describe the instance, but rather the processes that are running in it, because, we do not have a dataset of processes classified as malicious. The hybrid machine learning and genetic algorithms must be able to detect and mitigate it, using the correct order just as any algorithm would do. In our case, we have separated the variables into four groups.\\
+To identify malicious processes in an instance, certain features that may be indicative of such processes will be studied. These variables do not directly describe the instance, but rather the processes running on it, because there is no dataset of processes that have been classified as malicious. The hybrid machine learning and genetic algorithms must be able to detect and mitigate them, using the correct order as any algorithm would. In this case, the variables have been separated into four groups
 
 
 \subsubsection{File descriptors}
@@ -332,7 +338,7 @@ Therefore, for the logical bomb attack, $n^{[2]}=2$ because what we will obtain 
 
 such that  $P_{\texttt{no}}+P_{\texttt{kill}}=1$, where $x_i$ are the monitored variables for that process, defined in section \ref{variables}. So the activation function in the last hidden layer will be given by the function softmax \ref{softmax}. \\
 
-In our case, the neural network that we have chosen can be seen in the diagram we can see in figure \ref{fig:architecture_autoencoder}.\\
+In our case, the neural network that we have chosen can be seen in the diagram we can see in Figure \ref{fig:architecture_autoencoder}.\\
 
 \begin{figure*}[h!]
 \centering
