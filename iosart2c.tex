@@ -379,7 +379,7 @@ The chosen neural network for this study can be seen in Figure \ref{fig:architec
 
 \subsection{Evolving Neural Networks}
 
-Therefore, each agent is a neural network known as a multilayer perceptron (MLP) with $n^{[0]}=8$ \textit{input units} (neurons in the input layer), due to the variables of the processes to analyze (See Section \ref{variables}), $n^{[1]}=15$ \textit{hidden units} (neurons in the hidden layer) This design intention is to have twice as many neurons in the hidden layer as in the input layer, with $n^{[2]}=2$ \textit{output units} (neurons in the output layer). An illustration about the architecture of these agents is shown in Figure \ref{arq_agent}.
+Therefore, each agent is a neural network known as a multilayer perceptron (MLP) with $n^{[0]}=8$ \textit{input units} (neurons in the input layer), due to the variables of the processes to analyze (see Section \ref{variables} and Appendix \ref{agent_variables}), $n^{[1]}=15$ \textit{hidden units} (neurons in the hidden layer) This design intention is to have twice as many neurons in the hidden layer as in the input layer, with $n^{[2]}=2$ \textit{output units} (neurons in the output layer). An illustration about the architecture of these agents is shown in Figure \ref{arq_agent}.
 
 \subsection{Initialization}\label{sec_init}
 
@@ -682,207 +682,207 @@ A hybrid method for detecting and mitigating malicious processes on simulated ne
 
 \subsection{Central Processing Unit (CPU) Features}
 
-\textbf{cpu\_cores:} The number of CPU cores present on the host. The non-normalized percentages will have a maximum value of 100\% $\cdot$ cores. The normalized percentages already take this value into account and have a maximum value of 100\%.\\
+cpu\_cores: The number of CPU cores present on the host. The non-normalized percentages will have a maximum value of 100\% $\cdot$ cores. The normalized percentages already take this value into account and have a maximum value of 100\%.\\
 
-\textbf{cpu\_user\_pct:} The percentage of CPU time spent in user space. On multi-core systems, you can have percentages that are greater than 100\%. For example, if 3 cores are at 60\% use, then the system.cpu.user.pct will be 180\%.\\
+cpu\_user\_pct: The percentage of CPU time spent in user space. On multi-core systems, you can have percentages that are greater than 100\%. For example, if 3 cores are at 60\% use, then the system.cpu.user.pct will be 180\%.\\
 
-\textbf{cpu\_system\_pct:} The percentage of CPU time spent in kernel space.\\
+cpu\_system\_pct: The percentage of CPU time spent in kernel space.\\
 
-\textbf{cpu\_nice\_pct:} The percentage of CPU time spent on low-priority processes.\\
+cpu\_nice\_pct: The percentage of CPU time spent on low-priority processes.\\
 
-\textbf{cpu\_idle\_pct:} The percentage of CPU time spent idle.\\
+cpu\_idle\_pct: The percentage of CPU time spent idle.\\
 
-\textbf{cpu\_iowait\_pct:} The percentage of CPU time spent in wait (on disk).\\
+cpu\_iowait\_pct: The percentage of CPU time spent in wait (on disk).\\
 
-\textbf{cpu\_irq\_pct:} The percentage of CPU time spent servicing and handling hardware interrupts.\\
+cpu\_irq\_pct: The percentage of CPU time spent servicing and handling hardware interrupts.\\
 
-\textbf{cpu\_softirq\_pct:} The percentage of CPU time spent servicing and handling software interrupts.\\
+cpu\_softirq\_pct: The percentage of CPU time spent servicing and handling software interrupts.\\
 
-\textbf{cpu\_steal\_pct:} The percentage of CPU time spent in involuntary wait by the virtual CPU while the hypervisor was servicing another processor.\\
+cpu\_steal\_pct: The percentage of CPU time spent in involuntary wait by the virtual CPU while the hypervisor was servicing another processor.\\
 
-\textbf{cpu\_total\_pct:} The percentage of CPU time spent in states other than Idle and IOWait.\\
+cpu\_total\_pct: The percentage of CPU time spent in states other than Idle and IOWait.\\
 
 
 \subsection{Core features}
 
-\textbf{core\_user\_pct:} The percentage of CPU time spent in user space.\\
+core\_user\_pct: The percentage of CPU time spent in user space.\\
 
-\textbf{core\_system\_pct:} The percentage of CPU time spent in kernel space.\\
+core\_system\_pct: The percentage of CPU time spent in kernel space.\\
 
-\textbf{core\_nice\_pct:} The percentage of CPU time spent on low-priority processes.\\
+core\_nice\_pct: The percentage of CPU time spent on low-priority processes.\\
 
-\textbf{core\_idle\_pct:} The percentage of CPU time spent idle..\\
+core\_idle\_pct: The percentage of CPU time spent idle..\\
 
-\textbf{core\_iowait\_pct:} The percentage of CPU time spent in wait (on disk).\\
+core\_iowait\_pct: The percentage of CPU time spent in wait (on disk).\\
 
-\textbf{core\_irq\_pct:} The percentage of CPU time spent servicing and handling hardware interrupts.\\
+core\_irq\_pct: The percentage of CPU time spent servicing and handling hardware interrupts.\\
 
-\textbf{core\_softirq\_pct:}The percentage of CPU time spent servicing and handling software interrupts.\\
+core\_softirq\_pct:The percentage of CPU time spent servicing and handling software interrupts.\\
 
-\textbf{core\_steal\_pct:}  The percentage of CPU time spent in involuntary wait by the virtual CPU while the hypervisor was servicing another processor. Available only on Unix.
+core\_steal\_pct:  The percentage of CPU time spent in involuntary wait by the virtual CPU while the hypervisor was servicing another processor. Available only on Unix.
 
 
 \subsection{Disk Input/Output (Disk I/O) features}
 
-\textbf{diskio\_read\_count:} The total number of reads completed successfully.\\
+diskio\_read\_count: The total number of reads completed successfully.\\
 
-\textbf{diskio\_write\_count:} The total number of writes completed successfully.\\
+diskio\_write\_count: The total number of writes completed successfully.\\
 
-\textbf{diskio\_read\_bytes:} The total number of bytes read successfully. On Linux this is the number of sectors read multiplied by an assumed sector size of 512.\\
+diskio\_read\_bytes: The total number of bytes read successfully. On Linux this is the number of sectors read multiplied by an assumed sector size of 512.\\
 
-\textbf{diskio\_write\_bytes:} The total number of bytes written successfully. On Linux this is the number of sectors written multiplied by an assumed sector size of 512.\\
+diskio\_write\_bytes: The total number of bytes written successfully. On Linux this is the number of sectors written multiplied by an assumed sector size of 512.\\
 
-\textbf{diskio\_read\_time:} The total number of milliseconds spent by all reads.\\
+diskio\_read\_time: The total number of milliseconds spent by all reads.\\
 
-\textbf{diskio\_write\_time:} The total number of milliseconds spent by all writes.\\
+diskio\_write\_time: The total number of milliseconds spent by all writes.\\
 
-\textbf{diskio\_io\_time:} The total number of of milliseconds spent doing I/Os.\\
+diskio\_io\_time: The total number of of milliseconds spent doing I/Os.\\
 
-\textbf{diskio\_iostat\_read\_request\_merges\_per\_sec:} The number of read requests merged per second that were queued to the device.\\
+diskio\_iostat\_read\_request\_merges\_per\_sec: The number of read requests merged per second that were queued to the device.\\
 
-\textbf{diskio\_iostat\_write\_request\_merges\_per\_sec:} The number of write requests merged per second that were queued to the device.\\
+diskio\_iostat\_write\_request\_merges\_per\_sec: The number of write requests merged per second that were queued to the device.\\
 
-\textbf{diskio\_iostat\_read\_request\_per\_sec:} The number of read requests that were issued to the device per second.\\
+diskio\_iostat\_read\_request\_per\_sec: The number of read requests that were issued to the device per second.\\
 
-\textbf{diskio\_iostat\_wirte\_request\_per\_sec:} The number of write requests that were issued to the device per second.\\
+diskio\_iostat\_wirte\_request\_per\_sec: The number of write requests that were issued to the device per second.\\
 
-\textbf{diskio\_iostat\_read\_per\_sec\_bytes:} The number of Bytes read from the device per second.\\
+diskio\_iostat\_read\_per\_sec\_bytes: The number of Bytes read from the device per second.\\
 
-\textbf{diskio\_iostat\_read\_await:} The average time spent for read requests issued to the device to be served.\\
+diskio\_iostat\_read\_await: The average time spent for read requests issued to the device to be served.\\
 
-\textbf{diskio\_iostat\_write\_per\_sec\_bytes:}  The number of Bytes write from the device per second.\\
+diskio\_iostat\_write\_per\_sec\_bytes:  The number of Bytes write from the device per second.\\
 
-\textbf{diskio\_iostat\_write\_await:} The average time spent for write requests issued to the device to be served.\\
+diskio\_iostat\_write\_await: The average time spent for write requests issued to the device to be served.\\
 
-\textbf{diskio\_iostat\_request\_avg\_size:} The average size (in bytes) of the requests that were issued to the device.\\
+diskio\_iostat\_request\_avg\_size: The average size (in bytes) of the requests that were issued to the device.\\
 
-\textbf{diskio\_iostat\_queue\_avg\_size:}The average queue length of the requests that were issued to the device.\\
+diskio\_iostat\_queue\_avg\_size:The average queue length of the requests that were issued to the device.\\
 
-\textbf{diskio\_iostat\_await:} The average time spent for requests issued to the device to be served.\\
+diskio\_iostat\_await: The average time spent for requests issued to the device to be served.\\
 
-\textbf{diskio\_iostat\_service\_time:} The average service time (in milliseconds) for I/O requests that were issued to the device.\\
+diskio\_iostat\_service\_time: The average service time (in milliseconds) for I/O requests that were issued to the device.\\
 
-\textbf{diskio\_iostat\_busy:} Percentage of CPU time during which I/O requests were issued to the device (bandwidth utilization for the device). Device saturation occurs when this value is close to 100\%.\\
+diskio\_iostat\_busy: Percentage of CPU time during which I/O requests were issued to the device (bandwidth utilization for the device). Device saturation occurs when this value is close to 100\%.\\
 
 
 \subsection{Entropy}
 
-\textbf{entropy\_available\_bits:} The available bits of entropy.\\
+entropy\_available\_bits: The available bits of entropy.\\
 
-\textbf{entropy\_pct:} The percentage of available entropy, relative to the pool size of 4096.\\
+entropy\_pct: The percentage of available entropy, relative to the pool size of 4096.\\
 
 
 
 \subsection{Filesystem}
 
-\textbf{filesystem\_available:} The disk space available to an unprivileged user in bytes.\\
+filesystem\_available: The disk space available to an unprivileged user in bytes.\\
 
-\textbf{filesystem\_files:} The total number of file nodes in the file system.\\
+filesystem\_files: The total number of file nodes in the file system.\\
 
-\textbf{filesystem\_free:} The disk space available in bytes.\\
+filesystem\_free: The disk space available in bytes.\\
 
-\textbf{filesystem\_free\_files:} The number of free file nodes in the file system.\\
+filesystem\_free\_files: The number of free file nodes in the file system.\\
 
-\textbf{filesystem\_total:} The total disk space in bytes.\\
+filesystem\_total: The total disk space in bytes.\\
 
-\textbf{filesytem\_used\_bytes:} The used disk space in bytes.\\
+filesytem\_used\_bytes: The used disk space in bytes.\\
 
-\textbf{filesystem\_used\_pct:} The percentage of used disk space.\\
+filesystem\_used\_pct: The percentage of used disk space.\\
 
-\textbf{fsstat\_count:} Number of file systems found.\\
+fsstat\_count: Number of file systems found.\\
 
-\textbf{fsstat\_total\_files:} Total number of files.\\
+fsstat\_total\_files: Total number of files.\\
 
-\textbf{fsstat\_total\_size\_free:} Total free space.\\
+fsstat\_total\_size\_free: Total free space.\\
 
-\textbf{fsstat\_total\_size\_used:} Total used space.\\
+fsstat\_total\_size\_used: Total used space.\\
 
-\textbf{fsstat\_total\_size\_total:} Total space (used plus free).\\
+fsstat\_total\_size\_total: Total space (used plus free).\\
 
 \subsection{Memory Swap}
 
-\textbf{memory\_swap\_pct:} Total swap memory.\\
+memory\_swap\_pct: Total swap memory.\\
 
-\textbf{memory\_swap\_used\_bytes:} Used swap memory in bytes.\\
+memory\_swap\_used\_bytes: Used swap memory in bytes.\\
 
-\textbf{memory\_swap\_free:} Available swap memory.\\
+memory\_swap\_free: Available swap memory.\\
 
-\textbf{memory\_swap\_used\_pct:} The percentage of used swap memory.\\
+memory\_swap\_used\_pct: The percentage of used swap memory.\\
 
 
 \subsection{Memory hugepages}
 
-\textbf{memory\_hugepages\_total:} Number of huge pages in the pool.\\
+memory\_hugepages\_total: Number of huge pages in the pool.\\
 
-\textbf{memory\_hugepages\_used\_bytes:} Memory used in allocated huge pages in bytes.\\
+memory\_hugepages\_used\_bytes: Memory used in allocated huge pages in bytes.\\
 
-\textbf{memory\_hugepages\_used\_pct:} Percentage of huge pages used.\\
+memory\_hugepages\_used\_pct: Percentage of huge pages used.\\
 
-\textbf{memory\_hugepages\_free:} Number of available huge pages in the pool.\\
+memory\_hugepages\_free: Number of available huge pages in the pool.\\
 
-\textbf{memory\_hugepages\_reserved:} Number of reserved but not allocated huge pages in the pool.\\
+memory\_hugepages\_reserved: Number of reserved but not allocated huge pages in the pool.\\
 
-\textbf{memory\_hugepages\_surplus:} Number of overcommited huge pages.\\
+memory\_hugepages\_surplus: Number of overcommited huge pages.\\
 
-\textbf{memory\_hugepages\_default\_size:} Default size for huge pages.
+memory\_hugepages\_default\_size: Default size for huge pages.
 
 
 
 
 \subsection{Socket summary}
 
-\textbf{socket\_summary\_all\_count:} All open connections.\\
+socket\_summary\_all\_count: All open connections.\\
 
-\textbf{socket\_summary\_all\_listening:} All listening ports.\\
+socket\_summary\_all\_listening: All listening ports.\\
 
-\textbf{socket\_summary\_tcp\_memory:} Memory used by  \textit{Transmission Control Protocol} (TCP) sockets in bytes, based on number of allocated pages and system page size.
+socket\_summary\_tcp\_memory: Memory used by  \textit{Transmission Control Protocol} (TCP) sockets in bytes, based on number of allocated pages and system page size.
 
-\textbf{socket\_summary\_tcp\_all\_orphan:} A count of all orphaned tcp sockets.\\
+socket\_summary\_tcp\_all\_orphan: A count of all orphaned tcp sockets.\\
 
-\textbf{socket\_summary\_tcp\_all\_count:} All open TCP connections.\\
+socket\_summary\_tcp\_all\_count: All open TCP connections.\\
 
-\textbf{socket\_summary\_tcp\_all\_listening:} All TCP listening ports.\\
+socket\_summary\_tcp\_all\_listening: All TCP listening ports.\\
 
-\textbf{socket\_summary\_tcp\_all\_established:} Number of established TCP connections.\\
+socket\_summary\_tcp\_all\_established: Number of established TCP connections.\\
 
-\textbf{socket\_summary\_tcp\_all\_close\_wait:} Number of TCP connections in \textit{close\_wait} state.\\
+socket\_summary\_tcp\_all\_close\_wait: Number of TCP connections in \textit{close\_wait} state.\\
 
-\textbf{socket\_summary\_tcp\_all\_time\_wait:} Number of TCP connections in \textit{time\_wait} state.\\
+socket\_summary\_tcp\_all\_time\_wait: Number of TCP connections in \textit{time\_wait} state.\\
 
-\textbf{socket\_summary\_udp\_memory:} Memory used by UDP sockets in bytes, based on number of allocated pages and system page size.\\
+socket\_summary\_udp\_memory: Memory used by UDP sockets in bytes, based on number of allocated pages and system page size.\\
 
-\textbf{socket\_summary\_udp\_all\_count:} All open UDP connections.\\
+socket\_summary\_udp\_all\_count: All open UDP connections.\\
 
 
 %================== Appendix II =====================% 
 
-\section{Appendix: Description of each variable for the agents.}
+\section{Appendix: Description of each variable for the agents.} \label{agent_variables}
 
 
 \subsubsection{File descriptors}
 
-\textbf{process\_fd\_limit\_hard:} limit hard on the number of file descriptors opened by the process. The hard limit can only be increased by root.\\
+process\_fd\_limit\_hard: limit hard on the number of file descriptors opened by the process. The hard limit can only be increased by root.\\
 
-\textbf{process\_fd\_limit\_soft:} limit soft on the number of file descriptors opened by the process. The process can change the limit soft at any time.\\
+process\_fd\_limit\_soft: limit soft on the number of file descriptors opened by the process. The process can change the limit soft at any time.\\
 
-\textbf{process\_fd\_open:} the number of file descriptors opened by the process.\\
+process\_fd\_open: the number of file descriptors opened by the process.\\
 
 
 \subsubsection{Central Processing Unit (CPU)}
 
-\textbf{process\_cpu\_total\_norm\_pct:} Percentage of CPU time that the process consumes since the last event. This value is normalized by the number of CPU cores and ranges from 0\% to 100\%.\\
+process\_cpu\_total\_norm\_pct: Percentage of CPU time that the process consumes since the last event. This value is normalized by the number of CPU cores and ranges from 0\% to 100\%.\\
 
 \subsubsection{Memory}
 
-\textbf{process\_memory\_size:} The total in bytes of virtual memory that the process has.\\
+process\_memory\_size: The total in bytes of virtual memory that the process has.\\
 
-\textbf{process\_memory\_rss\_bytes:} The Resident Set Size (RSS) in bytes. The proportion of memory used by a process that is held in main memory (RAM), that is, the memory that the process occupied in main memory or RAM.\\
+process\_memory\_rss\_bytes: The Resident Set Size (RSS) in bytes. The proportion of memory used by a process that is held in main memory (RAM), that is, the memory that the process occupied in main memory or RAM.\\
 
-\textbf{process\_memory\_share:} the shared memory in bytes that the process uses.\\
+process\_memory\_share: the shared memory in bytes that the process uses.\\
 
 \subsubsection{Temporal features}
 
-\textbf{process\_cpu\_start\_time\_seconds:} The time (in seconds) since the process started.
+process\_cpu\_start\_time\_seconds: The time (in seconds) since the process started.
 
 
 
